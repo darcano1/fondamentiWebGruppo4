@@ -1,0 +1,25 @@
+{
+  "name": "gruppo4backend",
+  "version": "1.0.0",
+  "description": "Chat real-time - Progetto Fondamenti web Gruppo 4",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/darcano1/fondamentiWebGruppo4.git"
+  },
+  "keywords": [
+    "gruppo4"
+  ],
+  "author": "Poliba - Gruppo4",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/darcano1/fondamentiWebGruppo4/issues"
+  },
+  "homepage": "https://github.com/darcano1/fondamentiWebGruppo4#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
