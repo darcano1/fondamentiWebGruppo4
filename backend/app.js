@@ -1,23 +1,32 @@
-const http = require('http');
-const express = require('express');
-const mongoose = require('mongoose');
+require("dotenv").config();
+require("./config/database.config").connect();
+const express = require("express");
 const app = express();
-const hostname = '127.0.0.1';
-const port = 3000;
+const helmet = require("helmet");
+const morgan = require("morgan");
 
-//CONNESSIONE DATABASE
-mongoose.connect("mongodb+srv://darcano1:PmxsGoBWKfw4NNgS@progettogruppo4.n4ro1yu.mongodb.net/ProgettoGruppo4", {useNewUrlParser: true})
-    const db = mongoose.connection;  
-    db.once("open", () => {   
-        console.log("connesso al database");
+const authRoute = require("./routes/auth.route");
+const userRoute = require("./routes/user.route");
+
+app.use(express.json({ limit: "50mb" }));
+app.use(helmet());
+app.use(morgan("common"));
+
+
+app.use("/api/auth", authRoute);
+app.use("/api/user", userRoute);
+
+
+  // PAGINA INESISTENTE
+  app.use("*", (req, res) => {
+    res.status(404).json({
+      success: "false",
+      message: "Pagina non trovata",
+      error: {
+        statusCode: 404,
+        message: "Questa pagina non è stata definita",
+      },
     });
+  });
 
-
-app.listen(3195, () => {
-        console.log("_____________________________________");
-        console.log("Sto ascoltando su porta 3195");
-    });
-
-app.get('/', (req, res) => {
-    res.send('Homepage');
-});
+  module.exports = app;
