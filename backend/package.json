@@ -4,7 +4,9 @@
   "description": "Chat real-time - Progetto Fondamenti web Gruppo 4",
   "main": "index.js",
   "scripts": {
-    "test": "npm test"
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -20,10 +22,15 @@
   },
   "homepage": "https://github.com/darcano1/fondamentiWebGruppo4#readme",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^16.1.4",
     "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.0",
     "mongodb": "^5.6.0",
     "mongoose": "^7.2.2",
-    "mongose": "^0.0.2-security",
+    "mongose": "^0.0.2-security"
+  },
+  "devDependencies": {
     "nodemon": "^2.0.22"
   }
 }
