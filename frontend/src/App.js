@@ -9,7 +9,7 @@ import Dashboard from './pages/Dashboard';
 
 export default function App() {
   return (
-    <div>
+    <>
       <Routes>
         <Route path="/" element={<Login />}/>
 
@@ -18,6 +18,6 @@ export default function App() {
         <Route path="/dashboard" element={<Dashboard />}/>
         
       </Routes>
-    </div>
+    </>
   )
 }

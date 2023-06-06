@@ -1,7 +1,7 @@
 import React from 'react';
 import { useEffect, useState } from "react";
 
-const Dashboard = () => {
+export default function Dashboard()  {
   const [authenticated, setauthenticated] = useState(true); //da modificare true
   useEffect(() => {
     //verifica autenticazione con server
@@ -20,5 +20,3 @@ const Dashboard = () => {
     );
   }
 };
-
-export default Dashboard;
