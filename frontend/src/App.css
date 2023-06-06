@@ -1,77 +1,38 @@
-body {
-  display: flex;
+.App {
+  text-align: center;
 }
 
-#benvenuto{
-  background-color: #295df8;
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
   color: white;
-  flex-grow: 1;
-  flex-basis: 100em;
-  float: left;
 }
 
-#benvenuto > * {
-    position: sticky;
-    position: -webkit-sticky;
+.App-link {
+  color: #61dafb;
 }
 
-#form {
-  margin: 10vh;
-  flex-grow: 3;
-}
-
-.inputForm:hover{
-  border-color: #295df8;
-}
-
-.formButton {
-  margin-top: 10em;
-  margin-inline: 5em;
-}
-
-#login-register-div {
-  margin-bottom: 7em;
-}
-
-#login-register-active {
-  background-color: white;
-  color: #295df8;
-  border-width: 0;
-}
-
-#login-register-inactive{
-  background-color:#afc4f7;
-  color: #295df8;
-  border: 0;
-}
-
-#login-register{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  column-gap: 5vh;
-}
-
-#login-register-inactive:disabled,
-#login-register-active:disabled {
-  color: #295df8;
-}
-
-
-
-#login{
-  display: flex;
-  flex-direction: row;
-}
-
-
-
-h1{
-  padding-top: 3em;
-  padding-bottom: 1.5em;
-  margin: 1em;
-}
-
-p{
-  margin: 1em;
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
