@@ -1,0 +1,106 @@
+body {
+  height: 100%;
+  width: 100%;
+  background-color: red;
+  height: 100vh;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+#login-div {
+  border: solid lightgray 1px;
+  margin: 5em;
+  border-radius: 1em;
+  -webkit-box-shadow: -2px 0px 40px 5px rgba(80,80,80,0.3); 
+box-shadow: -2px 0px 40px 5px rgba(80,80,80,0.3);
+  overflow: hidden;
+}
+
+#login{
+  display: flex;
+  flex-direction: row;
+}
+
+#benvenuto {
+  background: rgb(41,93,248);
+background: linear-gradient(90deg, rgba(41,93,248,1) 0%, rgba(7,151,254,1) 100%);
+  color: #FEFEFE;
+  flex-grow: 1;
+  flex-basis: 200em;
+  float: left;
+  position: relative;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5em;
+}
+
+
+#benvenuto-elements > * {
+    position: sticky;
+    position: -webkit-sticky;
+}
+
+#benvenuto-elements h1 {
+  margin-bottom: 1em;
+}
+
+#divForm{
+  background-color: #FEFEFE;
+}
+
+#form {
+  margin: 10vh;
+  flex-grow: 3;
+  max-width: 30em;
+  background-color: #FEFEFE;
+}
+
+.inputForm:hover{
+  border-color: #295df8;
+}
+
+.formButton {
+  margin-top: 4em;
+  margin-inline: 5em;
+}
+
+#login-register-div {
+  width: 25em;
+  margin: auto;
+  margin-bottom: 3em;
+}
+
+#login-register-active {
+  background-color:#FEFEFE;
+  color: #295df8;
+  border-width: 0;
+}
+
+#login-register-inactive{
+  background-color:#afc4f7;
+  color: #295df8;
+  border: 0;
+}
+
+#login-register{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  column-gap: 5vh;
+}
+
+#login-register-inactive:disabled,
+#login-register-active:disabled {
+  color: #295df8;
+}
+
+#btn-signin {
+  background: linear-gradient(90deg, rgba(7,151,254,1) 0%, rgba(41,93,248,1) 100%);
+  border: 0;
+}
+

@@ -1,7 +1,6 @@
 import React from 'react'
 import Form from 'react-bootstrap/Form';
 import { useState } from 'react'
-import '../../App.css';
 
 export default function RegisterForm({ handleSubmit }) {
 
@@ -9,11 +8,13 @@ export default function RegisterForm({ handleSubmit }) {
   const [check, setCheck] = useState(false) // F->combaciano | T->non combaciano
   
   function checkEverPassword() {
+    console.log("eseguito")
     if (document.getElementById("register-form").repeatpsw.value !== "") {
       setTimeout(()=> {
         const psw = document.getElementById("register-form").psw.value;
         const repeatpsw = document.getElementById("register-form").repeatpsw.value;
-        setCheck(repeatpsw !== psw)}, 1000); // timeout 1s
+        setCheck(repeatpsw !== psw)
+        console.log("eseguito fine timer")}, 1000); // timeout 1s
       }
   }
 
@@ -27,16 +28,6 @@ export default function RegisterForm({ handleSubmit }) {
   return (
     <div id="register">
         <Form id="register-form">
-
-          {/** NOME */}
-          <Form.Group className="mb-3">
-            <Form.Control className="inputForm" type="text" placeholder="Nome" required/>
-          </Form.Group>
-
-          {/** COGNOME */}
-          <Form.Group className="mb-3">
-            <Form.Control className="inputForm" type="text" placeholder="Cognome" required/>
-          </Form.Group>
 
           {/** USERNAME */}
           <Form.Group className="mb-3">
@@ -61,7 +52,7 @@ export default function RegisterForm({ handleSubmit }) {
 
           {/** SUBMIT */}
           <Form.Group className="formButton">
-            <Form.Control type="submit" className="btn btn-primary inputForm" value="SIGN IN"/>
+            <Form.Control id="btn-signin" type="submit" className="btn btn-primary inputForm" value="SIGN IN"/>
           </Form.Group>
           
         </Form>
