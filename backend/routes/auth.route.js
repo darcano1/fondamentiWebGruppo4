@@ -22,7 +22,6 @@ router.post("/register", async (req, res) => {
             email: email.toLowerCase(),
             password: encryptedPassword,
             username: username,
-            phone: "",
             isAdmin: false,
             profilePic: "",
             friendList: [],
@@ -51,7 +50,7 @@ router.post("/login", async (req, res) => {
     try {
         const { email, password } = req.body;
         if (!(email && password)) {
-            res.status(400).send("Tutti i campi sono obbligatori");
+            return res.status(400).send("Tutti i campi sono obbligatori");
         }
         const user = await User.findOne({ email });
         if (user && (await bcrypt.compare(password, user.password))) {
@@ -63,18 +62,21 @@ router.post("/login", async (req, res) => {
                 }
             );
             user.token = token;
-            res.status(201).json({
+            return res.status(201).json({
                 _id: user._id,
                 username: user.username,
                 email: user.email,
                 token: user.token,
             });
         }
-        res.status(400).send("Credenziali non valide");
+        return res.status(400).send("Credenziali non valide");
     } catch (err) {
         console.log(err);
+        // Handle the error appropriately, e.g., send an error response
+        return res.status(500).send("Internal Server Error");
     }
 });
+
 
 router.get("/welcome", auth, (req, res) => {
     res.status(200).send("Benvenuto");
