@@ -1,22 +1,17 @@
 import React from 'react';
+import './Dashboard.css'
+import { Container } from 'react-bootstrap';
 import { useEffect, useState } from "react";
+import LeftContainer from '../components/Dashboard/Left/LeftContainer'
+import RightContainer from '../components/Dashboard/Right/RightContainer'
 
 export default function Dashboard()  {
-  const [authenticated, setauthenticated] = useState(true); //da modificare true
-  useEffect(() => {
-    //verifica autenticazione con server
-    /*if (loggedInUser) {
-      setauthenticated(loggedInUser);
-    }*/
-  }, []);
+  
+  return (
+    <Container fluid className="d-flex flex-row p-0 justify-content-center" id="all-container">
+      <LeftContainer />
+      <RightContainer />
+    </Container>
+  )
 
-  if (!authenticated) {
-  // Redirect
-  } else {
-    return (
-      <div>
-        <p>Welcome to your Dashboard</p>
-      </div>
-    );
-  }
 };

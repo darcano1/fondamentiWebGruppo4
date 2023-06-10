@@ -1,5 +1,5 @@
 import { useState } from "react";
-import '../App.css';
+import './Login.css';
 import Dashboard from './Dashboard'
 import { useNavigate } from 'react-router-dom';
 import React from 'react';

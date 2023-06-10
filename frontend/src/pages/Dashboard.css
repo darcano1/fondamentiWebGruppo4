@@ -1,0 +1,310 @@
+/* Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #000000 #dfe9eb;
+  }
+  
+  /* Chrome, Edge and Safari */
+  *::-webkit-scrollbar {
+    width: 10px;
+    width: 10px;
+  }
+  *::-webkit-scrollbar-track {
+    border-radius: 19px;
+    background-color: #f4f4f4;
+    border: 10px solid #f4f4f4;
+  }
+  
+  *::-webkit-scrollbar-track:hover {
+    background-color: #b8c0c2;
+  }
+  
+  *::-webkit-scrollbar-track:active {
+    background-color: #b8c0c2;
+  }
+  
+  *::-webkit-scrollbar-thumb {
+    border-radius: 20px;
+    background-color: #000000;
+    border: 2px solid #f4f4f4;
+  }
+  
+  *::-webkit-scrollbar-thumb:hover {
+    background-color: #555555;
+  }
+  
+  *::-webkit-scrollbar-thumb:active {
+    background-color: #919191;
+  }
+  
+  /* CANCELLARE PER VISUALIZZARE SCROLL BAR */
+  *::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* ------------------------------------------------------------------------- */
+  /* ------------------------------------------------------------------------- */
+  
+  input:focus,
+  select:focus,
+  textarea:focus,
+  button:focus {
+    outline: none;
+  }
+  
+  html {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    font-size: 1em;
+  }
+  
+  body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: lightgray;
+    display: flex;
+    align-items: center;
+  }
+  
+  #all-container {
+    width: fit-content;
+    height: 88vh;
+    border-radius: 1em;
+    overflow: hidden;
+    -webkit-box-shadow: 0px 0px 20px -5px #000000;
+    box-shadow: 0px 0px 20px -5px #000000;
+  }
+  
+  /* ------------------------------------------------------------------------- */
+  /* LEFT CONTAINER */
+  
+  #left-container {
+    position: relative;
+    width: 25vw;
+    min-width: 17em;
+    height: auto;
+    max-height: 90vh;
+    background-color: #f4f4f4;
+  }
+  
+  #buttons-left-container {
+    width: fit-content;
+    align-items: center;
+    color: #000000;
+  }
+  
+  #buttons-left-container button {
+    height: fit-content;
+    background-color: #fefefe;
+    border: none;
+    border-radius: 1em;
+  }
+  
+  #buttons-left-container button:hover {
+    background-color: #f9f9f9;
+    -webkit-box-shadow: 0px 0px 10px 2px #fff;
+    box-shadow: 0px 0px 10px 2px #fff;
+  }
+  
+  #cerca-chat {
+    border-radius: 1em;
+    border: none;
+    margin-left: 0.5em;
+    display: flex;
+    flex-direction: row;
+  }
+  
+  #cerca-chat span {
+    background-color: #fefefe;
+    border: none;
+    border-bottom-left-radius: 1em;
+    border-top-left-radius: 1em;
+  }
+  
+  #cerca-chat input {
+    background-color: #fefefe;
+    border: none;
+    flex-grow: 1;
+    margin-right: 1em;
+    border-bottom-right-radius: 1em;
+    border-top-right-radius: 1em;
+    border-style: inset;
+    border-width: 0;
+  }
+  
+  #cerca-chat input:hover {
+    background-color: #fafafa;
+    -webkit-box-shadow: 0px 0px 10px 2px #fff;
+    box-shadow: 0px 0px 10px 2px #fff;
+  }
+  
+  .img-div {
+    position: relative;
+    width: 25%;
+  }
+  .user-msg-div {
+    width: 60%;
+  }
+  .details-div {
+    width: 15%;
+  }
+  
+  #chat-list {
+    margin-left: 0.5em;
+    border-top-left-radius: 1em;
+    border-bottom-left-radius: 1em;
+    border-top-right-radius: 0.5em;
+    border-bottom-right-radius: 0.5em;
+    overflow: hidden;
+    overflow-y: auto;
+    background-color: #f4f4f4;
+    -webkit-box-shadow: -10px 10px 15px -8px rgba(0, 0, 0, 0.65);
+    box-shadow: -10px 10px 15px -8px rgba(0, 0, 0, 0.3);
+  }
+  
+  #chat-list li {
+    border: none;
+    border-bottom: #dfe9eb solid 1px;
+  }
+
+  
+  #chat-list li:hover {
+    background-color: rgba(45, 45, 45, 0.05);
+  }
+  
+  .img-div img {
+    object-fit: cover;
+    width: 4em;
+    height: 4em;
+    margin-left: -1em;
+    border-radius: 50%;
+    -webkit-box-shadow: 0px 15px 14px -19px #000000;
+    box-shadow: 0px 15px 14px -19px #000000;
+  }
+  
+  .username-chat,
+  .messaggio-chat {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  
+  .time {
+    font-size: smaller;
+  }
+  
+  /* ------------------------------------------------------------------------- */
+  /* RIGHT CONTAINER */
+  
+  #right-container {
+    position: relative;
+    width: 50vw;
+    min-width: 22.5em;
+    height: auto;
+    max-height: 90vh;
+    background-color: #f4f4f4;
+  }
+  
+  #img-profilo {
+    width: fit-content;
+  }
+  
+  #header-right {
+    align-items: center;
+  }
+  
+  #header-right img {
+    width: 5em;
+    height: 5em;
+  }
+  
+  /* MESSAGE-AREA  */
+  #message-area {
+    overflow-y: auto;
+  }
+  
+  #scrivi-messaggio {
+    margin-left: 0.5em;
+    display: flex;
+    flex-direction: row;
+  }
+  
+  #scrivi-messaggio button {
+    background-color: #fefefe;
+    border: none;
+    border-bottom-left-radius: 1em;
+    border-top-left-radius: 1em;
+  }
+  
+  #scrivi-messaggio #invia {
+    background-color: #fefefe;
+    border: none;
+    border-radius: 0;
+    border-bottom-right-radius: 1em;
+    border-top-right-radius: 1em;
+  }
+  
+  #scrivi-messaggio input {
+    background-color: #fefefe;
+    border: none;
+    flex-grow: 1;
+    border-style: inset;
+    border-width: 0;
+  }
+  
+  #scrivi-messaggio #invia:hover,
+  #scrivi-messaggio #photo:hover,
+  #scrivi-messaggio input:hover {
+    background-color: #fafafa;
+    -webkit-box-shadow: 0px 0px 10px 2px #fff;
+    box-shadow: 0px 0px 10px 2px #fff;
+  }
+  
+  #invia #scrivi-messaggio button {
+    padding: 0;
+    border: none;
+    background: none;
+  }
+  
+  .message {
+    margin-bottom: 1em;
+    display: flex;
+  }
+  
+  .my-message {
+    text-align: right;
+    flex-direction: row-reverse;
+  }
+  
+  .message p {
+    border-radius: 1em;
+    width: max-content;
+    padding: 0.5em;
+    word-wrap: break-word;
+    word-break: break-all;
+    line-height: 1.25em;
+  }
+  
+  .message p span {
+    display: block;
+    color: #555555;
+    font-size: smaller;
+  }
+  
+  .my-message p {
+    margin-left: 20%;
+    background-color: lightgreen;
+  }
+  
+  .friend-message p {
+    margin-right: 20%;
+    background-color: lightcoral;
+  }
+  
+  #message-area::-webkit-scrollbar {
+    position: absolute;
+    bottom: 0;
+  }
+  
