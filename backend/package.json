@@ -25,19 +25,10 @@
     "bcryptjs": "^2.4.3",
     "dotenv": "^16.1.4",
     "express": "^4.18.2",
-<<<<<<< HEAD
-    "helmet": "^7.0.0",
-    "jsonwebtoken": "^9.0.0",
-    "mongodb": "^5.6.0",
-    "mongoose": "^7.2.2",
-    "mongose": "^0.0.2-security",
-    "morgan": "^1.10.0"
-=======
     "jsonwebtoken": "^9.0.0",
     "mongodb": "^5.6.0",
     "mongoose": "^7.2.2",
     "mongose": "^0.0.2-security"
->>>>>>> 41ca182f3553425bc08e2649787413b45a8b0c10
   },
   "devDependencies": {
     "nodemon": "^2.0.22"
