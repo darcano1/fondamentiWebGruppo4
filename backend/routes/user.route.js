@@ -23,6 +23,26 @@ router.get("/:username", auth, async (req, res) => {
 }
 );
 
+router.get("/profile/:_id", async (req, res) => {
+  try{
+    const id = await User.findOne({ _id: req.params._id });
+    if (!id) {
+      return res.status(404).send("Utente non trovato");
+    }
+    res.status(200).json({
+      _id: id._id,
+      username: id.username,
+      email: id.email,
+      friendList: id.friendList,
+      profilePic: id.profilePic
+    })
+
+  }
+  catch(err){
+    console.log(err);
+  }
+});
+
 router.put("/addFriend/:_id", auth, async (req, res) => {
     try {
       const user = await User.findOne({ _id: req.params._id });
