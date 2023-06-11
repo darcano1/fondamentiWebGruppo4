@@ -16,7 +16,7 @@ router.post("/register", async (req, res) => {
         if (oldUser) {
             return res.status(409).send("Utente già registrato. Effettua il login");
         }
-        let encryptedPassword = await bcrypt.hash(password, 10);
+        encryptedPassword = await bcrypt.hash(password, 10);
 
         const user = await User.create({
             email: email.toLowerCase(),
@@ -62,7 +62,6 @@ router.post("/login", async (req, res) => {
                 }
             );
             user.token = token;
-
             return res.status(201).json({
                 _id: user._id,
                 username: user.username,
