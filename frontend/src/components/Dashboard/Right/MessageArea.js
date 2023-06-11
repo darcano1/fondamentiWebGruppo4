@@ -9,7 +9,7 @@ export default function MessageArea() {
             </div>
     
             <div className="message friend-message">
-                <p className="shadow-sm">Bene, tu?<span className="paragraph block time m-0">11.24</span></p>
+                <p className="shadow-sm">Bene, tu?<span className="paragraph block time m-0 text-start">11.24</span></p>
             </div>
       </Container>
     );

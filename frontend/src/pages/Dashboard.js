@@ -1,7 +1,6 @@
 import React from 'react';
 import './Dashboard.css'
 import { Container } from 'react-bootstrap';
-import { useEffect, useState } from "react";
 import LeftContainer from '../components/Dashboard/Left/LeftContainer'
 import RightContainer from '../components/Dashboard/Right/RightContainer'
 
