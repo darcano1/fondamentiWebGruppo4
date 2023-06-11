@@ -1,24 +1,39 @@
 import React from "react";
+import { useEffect } from "react";
 import { ListGroup, Image, Badge } from "react-bootstrap";
+import axios from "axios";
 
-export default function Chat({ data }) {
+export default function Chat({ chat }) {
   const config = {
     headers: { "x-access-token": localStorage.getItem("token") },
   };
 
-  function getUsername(id) {
-    axios.get("");
-  }
-
+  // prende messaggi e dati utenti per la chat
   let usernameUtente;
-  if (data.members[0] == localStorage.getItem("_id")) {
-    usernameUtente = getUsername(data.members[1]);
-  } else {
-    usernameUtente = getUsername(data.members[0]);
-  }
+  let messages;
+  useEffect(() => {
+    async function getUsername(id) {
+      axios
+        .get("http://localhost:4001/api/user/profile/" + id, config)
+        .then( res => res.data)
+        .catch( err => console.log(err.response));
+    }
+
+    if (chat.members[0] == localStorage.getItem("_id")) {
+      usernameUtente = getUsername(chat.members[1]);
+    } else {
+      usernameUtente = getUsername(chat.members[0]);
+    }
+
+    // prense messaggi
+    axios
+      .get("http://localhost:4001/api/messages/" + chat._id)
+      .then((res) => (messages = res.data))
+      .catch((err) => console.log(err.response));
+  }, []);
 
   return (
-    <ListGroup.Item className="d-flex p-1" aria-current="true">
+    <li className="list-group-item d-flex p-1" aria-current="true">
       {/* immagine IMG-DIV */}
       <div className="container img-div m-1 text-center">
         <Image
@@ -29,23 +44,23 @@ export default function Chat({ data }) {
 
       {/* username e messaggio USER-MSG-DIV */}
       <div className="container user-msg-div p-0">
-        <h5 className="username-chat mt-2 text-start">Pasquale Bianco</h5>
+        <h5 className="username-chat mt-2 text-start">{usernameUtente}</h5>
         <p className="messaggio-chat m-0 mt-2">
-          HTML e CSS sono belli, ma la figa
+          {messages[ messages.length-1 ]}
         </p>
       </div>
 
       {/* orario e non letti DETAILS-DIV */}
       <div className="container details-div p-0">
-        <div className="position-absolute top-0 end-0 m-2">
+        {/* <div className="position-absolute top-0 end-0 m-2">
           <Badge pill variant="warning" text="dark">
             5
           </Badge>
-        </div>
+        </div> */}
         <div className="position-absolute bottom-0 end-0 m-2">
-          <p className="paragraph block time m-0">11.24</p>
+          <p className="paragraph block time m-0">AGGIUNGERE</p>
         </div>
       </div>
-    </ListGroup.Item>
+    </li>
   );
 }

@@ -4,6 +4,7 @@ const express = require("express");
 const app = express();
 const helmet = require("helmet");
 const morgan = require("morgan");
+const cors = require('cors')
 
 const authRoute = require("./routes/auth.route");
 const userRoute = require("./routes/user.route");
@@ -13,6 +14,7 @@ const chatRoute = require("./routes/chat.route");
 app.use(express.json({ limit: "50mb" }));
 app.use(helmet());
 app.use(morgan("common"));
+app.use(cors())
 
 
 app.use("/api/auth", authRoute);
