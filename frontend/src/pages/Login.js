@@ -33,10 +33,10 @@ export default function Login() {
         password: e.target.psw.value,
       })
       .then( res => {
-        localStorage.setItem("token", res.token);
-        localStorage.setItem("_id", res._id);
-        localStorage.setItem("username", res.username);
-        localStorage.setItem("email", res.email);
+        localStorage.setItem("token", res.data.token);
+        localStorage.setItem("_id", res.data._id);
+        localStorage.setItem("username", res.data.username);
+        localStorage.setItem("email", res.data.email);
         navigate('/dashboard');
       })
       .catch( err => {setRispostaServerLogin(err.response.data)});
@@ -53,10 +53,10 @@ export default function Login() {
         username: e.target.username.value
       })
       .then( res => {
-        localStorage.setItem("token", res.token);
-        localStorage.setItem("_id", res._id);
-        localStorage.setItem("username", res.username);
-        localStorage.setItem("email", res.email);
+        localStorage.setItem("token", res.data.token);
+        localStorage.setItem("_id", res.data._id);
+        localStorage.setItem("username", res.data.username);
+        localStorage.setItem("email", res.data.email);
         navigate("/dashboard")
       })
       .catch( err => {
