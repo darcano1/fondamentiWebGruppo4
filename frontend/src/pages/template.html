@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="it">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+
+    <title>Hello, world!</title>
+</head>
+
+<body>
+    <div id="all-container" class="container-fluid d-flex flex-row p-0 justify-content-center">
+
+        <!-- left container -->
+        <div id="left-container" class="d-flex flex-column flex-shrink-1">
+
+            <!--  header  -->
+            <div class="container-fluid d-flex ">
+                <h1 class="me-auto ms-3 mt-2">Chats</h1>
+
+                <!-- buttons -->
+                <div id="buttons-left-container" class="input-group d-flex flex-row">
+                    <button id="amici" class="input-group-text shadow-sm me-2" id="">amici</button>
+                    <button id="logout" class="input-group-text shadow-sm">logout</button>
+                </div>
+            </div>
+
+            <div id="cerca-chat" class="input-group mb-3 flex-shrink-1">
+                <span class="input-group-text shadow-sm" id="">P</span>
+                <input type="text" class="shadow-sm" placeholder="Cerca una chat" aria-label="Username"
+                    aria-describedby="">
+            </div>
+
+            <!-- lista -->
+            <ul id="chat-list" class="list-group overflow-auto shadow-sm flex-grow-1 mb-2">
+
+                <li class="list-group-item d-flex p-1" aria-current="true">
+
+                    <!-- immagine IMG-DIV -->
+                    <div class="container img-div m-1 text-center ">
+                        <img alt="cane" src="./download.jpg">
+                    </div>
+
+                    <!-- username e messaggio USER-MSG-DIV -->
+                    <div class="container user-msg-div p-0">
+                        <h5 class="username-chat mt-2">Pasquale Bianco</h5>
+                        <p class="messaggio-chat m-0 mt-2">HTML e CSS sono belli, ma la figa
+                        </p>
+                    </div>
+
+                    <!-- orario e non letti DETAILS-DIV -->
+                    <div class="container details-div p-0">
+                        <div class="position-absolute top-0 end-0 m-2">
+                            <p class="badge rounded-pill bg-warning text-dark">5</p>
+                        </div>
+                        <div class="position-absolute bottom-0 end-0 m-2">
+                            <p class="paragraph block time m-0">11.24</p>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="list-group-item d-flex p-1" aria-current="true">
+
+                    <!-- immagine IMG-DIV -->
+                    <div class="container-fluid img-div m-1 text-center">
+                        <img alt="cane" src="./download.jpg">
+                    </div>
+
+                    <!-- username e messaggio USER-MSG-DIV -->
+                    <div class="container-fluid user-msg-div p-0">
+                        <h5 class="username-chat mt-2">Pasquale</h5>
+                        <p class="messaggio-chat m-0 mt-2">Ciao Marco, come staiaaaaaaaaaaaaaaaadddddddddddddddddaaaa?
+                        </p>
+                    </div>
+
+                    <!-- orario e non letti DETAILS-DIV -->
+                    <div class="container-fluid details-div p-0">
+                        <div class="position-absolute top-0 end-0 m-2">
+                            <p class="badge rounded-pill bg-warning text-dark">5</p>
+                        </div>
+                        <div class="position-absolute bottom-0 end-0 m-2">
+                            <p class="paragraph block time m-0">11.24</p>
+                        </div>
+                    </div>
+                </li>
+
+
+            </ul>
+
+
+        </div> <!-- end left container-->
+
+
+        <!-- right container-->
+        <div id="right-container" class=" p-4 d-flex flex-column">
+
+
+            <!-- header -->
+            <div id="header-right" class="container-fluid d-flex flex-row ms-2 mt-2 ps-4 flex-shrink-1">
+                <div id="img-profilo" class="container img-div m-0 p-0 text-center">
+                    <img alt="cane" src="./download.jpg">
+                </div>
+                <h1 class="username-chat ms-3">Nome amico</h1>
+            </div>
+
+            <!-- message area -->
+            <div id="message-area" class="container flex-grow-1 ms-2 my-3 px-4">
+
+                <div class="message my-message">
+                    <p class="shadow-sm">Ciao, come stai?<span class="paragraph block time m-0">11.24</span></p>
+
+                </div>
+
+                <div class="message friend-message">
+                    <p class="shadow-sm">Bene, tu?<span class="paragraph block time m-0">11.24</span></p>
+                </div>
+            </div>
+
+            <!-- scrivi messaggio -->
+            <div id="scrivi-messaggio" class="input-group ms-2 flex-shrink-1">
+                <button id="photo" class="input-group-text shadow-sm" id="">photo</button>
+                <input contenteditable="true" type="text" class="shadow-sm ps-2" placeholder="Scrivi un messaggio..."
+                    aria-label="Username" aria-describedby="">
+                <button id="invia" class="input-group-text shadow-sm">invia</button>
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>
