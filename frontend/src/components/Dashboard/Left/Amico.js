@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { ListGroup, Image, Badge } from "react-bootstrap";
 
-export default function Amico({ amico }) {
+export default function Amico({ amico, handleChatAperta }) {
   // header token
   const config = {
     headers: { "x-access-token": localStorage.getItem("token") },
@@ -27,9 +27,8 @@ export default function Amico({ amico }) {
   
   console.log(messages);
 
-
   return (
-    <li className="list-group-item d-flex p-1" aria-current="true">
+    <li className="list-group-item d-flex p-1" aria-current="true" onClick={(e) => handleChatAperta(e, amico)}>
       {/* immagine IMG-DIV */}
       <div className="container img-div m-1 text-center">
         <Image

@@ -4,7 +4,7 @@ import axios from "axios";
 import Chat from "./Chat";
 import Amico from "./Amico";
 
-export default function ListaChat({ lista, amici }) {
+export default function ListaChat({ lista, amici, handleChatAperta }) {
 
     // header token
     const config = {
@@ -29,7 +29,7 @@ export default function ListaChat({ lista, amici }) {
     return (
         <ul id="chat-list" className="list-group overflow-auto shadow-sm flex-grow-1 mb-2" >
         {amici
-            ? listaAmici.map( amico => <Amico amico={amico} key={amico._id}/>)
+            ? listaAmici.map( amico => <Amico amico={amico} key={amico._id} handleChatAperta={handleChatAperta}/>)
             : lista.map( chatt => <Chat chat={chatt} key={chatt._id} />)}
         </ul>
     );

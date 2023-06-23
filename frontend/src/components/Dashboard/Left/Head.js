@@ -2,9 +2,9 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { Container, Button, InputGroup, FormControl } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch, faUsers, faSignOut } from '@fortawesome/free-solid-svg-icons';
+import { faSearch, faUsers, faSignOut, faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 
-export default function Head({ amici, handleAmici }) {
+export default function Head({ amici, handleAmici, handleNewChat}) {
 
     const navigate = useNavigate();
 
@@ -13,13 +13,23 @@ export default function Head({ amici, handleAmici }) {
         navigate('/');
     }
 
+    function aggiungiAmico(){
+        
+        // Logica per div in sovraimpressione
+
+
+    }
+
     return (
         <>
             <Container fluid className="d-flex flex-row">
                 <h1 className="me-auto ms-3 mt-2">{amici ? "Amici" : "Chats"}</h1>
 
                 <div id="buttons-left-container" className="input-group d-flex flex-row">
-                    <Button id="amici" className="input-group-text shadow-sm me-2" onClick={handleAmici} style={amici ? {backgroundColor: 'lightgrey'} : null}  >
+                    <Button id="nuovoAmico" className="input-group-text shadow-sm me-2" onClick={aggiungiAmico}>
+                        <FontAwesomeIcon icon={faPlusCircle} style={{color:'black'}}/>
+                    </Button>
+                    <Button id="amici" className="input-group-text shadow-sm me-2" onClick={handleAmici} style={amici ? {backgroundColor: 'lightgrey'} : null}>
                         <FontAwesomeIcon icon={faUsers} style={{color:'black'}}/>
                     </Button>
                     <Button id="logout" className="input-group-text shadow-sm" onClick={logOut}>

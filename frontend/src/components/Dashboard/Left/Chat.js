@@ -29,7 +29,10 @@ export default function Chat({ chat }) {
     // prende messaggi
     axios
       .get("http://localhost:4001/api/messages/" + chat._id)
-      .then( res => setMessages(res.data))
+      .then( res => {
+        setMessages(res.data);
+        console.log("test" + res);
+      })
       .catch( err => console.log(err.response));
   }, []);
 
@@ -39,7 +42,7 @@ export default function Chat({ chat }) {
       {/* immagine IMG-DIV */}
       <div className="container img-div m-1 text-center">
         <Image
-          alt="cane"
+          alt={utente.username}
           src={utente.profilePic}
         />
       </div>
@@ -48,7 +51,7 @@ export default function Chat({ chat }) {
       <div className="container user-msg-div p-0">
         <h5 className="username-chat mt-2 text-start">{utente.username}</h5>
         <p className="messaggio-chat m-0 mt-2">
-          { messages.length > 0 ? messages[messages.length - 1] : null }
+          {/* messages.length > 0 ? messages[messages.length - 1] : null */}
         </p>
       </div>
 
