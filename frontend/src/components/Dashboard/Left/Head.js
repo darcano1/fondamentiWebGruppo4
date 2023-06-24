@@ -3,27 +3,19 @@ import { useNavigate } from "react-router-dom";
 import { Container, Button, InputGroup, FormControl } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faUsers, faSignOut, faPlusCircle } from '@fortawesome/free-solid-svg-icons';
-import windowAggiuntaAmico from "./windowAggiuntaAmico";
 
-export default function Head({ amici, handleAmici, handleNewChat}) {
+
+export default function Head({ amici, handleAmici, handleNewChat, handleAggiungiAmico}) {
 
     const navigate = useNavigate();
-
-    const [aggiuntaAmico, setAggiuntaAmico] = useState(false);
 
     function logOut() {
         localStorage.clear();
         navigate('/');
     }
 
-    function handleAggiungiAmico(){
-        // Logica per div in sovraimpressione
-        setAggiuntaAmico(!aggiuntaAmico);
-    }
-
     return (
         <>
-        {aggiuntaAmico && <windowAggiuntaAmico/>}
             <Container fluid className="d-flex flex-row">
                 <h1 className="me-auto ms-3 mt-2">{amici ? "Amici" : "Chats"}</h1>
                 <div id="buttons-left-container" className="input-group d-flex flex-row">

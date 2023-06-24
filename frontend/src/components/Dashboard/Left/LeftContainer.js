@@ -6,7 +6,7 @@ import Head from "./Head";
 import ListaChat from "./ListaChat";
 
 
-export default function LeftContainer({handleChatAperta}) {
+export default function LeftContainer({handleChatAperta, handleAggiungiAmico}) {
 
     // header token 
     const config = { headers:
@@ -42,7 +42,7 @@ export default function LeftContainer({handleChatAperta}) {
 
     return (
         <Container fluid className="d-flex flex-column flex-shrink-1" id="left-container">
-            <Head amici={listaAmici} handleAmici={handleListaAmici}/>
+            <Head amici={listaAmici} handleAmici={handleListaAmici} handleAggiungiAmico={handleAggiungiAmico}/>
             <ListaChat lista={listaAmici ? elencoIdAmici : elencoChat} amici={listaAmici} handleChatAperta={handleChatAperta} />
         </Container>
     )
