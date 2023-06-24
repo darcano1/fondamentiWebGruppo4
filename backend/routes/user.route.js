@@ -43,6 +43,23 @@ router.get("/profile/:_id", async (req, res) => {
   }
 });
 
+router.post("/profile/modify/:_id", async (req, res) => {
+  try{
+    const id = await User.findOne({ _id: req.params._id });
+    if (!id) {
+      return res.status(404).send("Utente non trovato");
+    }
+    id.profilePic = req.body.profilePic;
+    id.username = req.body.username;
+    await id.save();
+    res.status(200).send("Dati modificati correttamente");
+  }
+  catch(err){
+    console.log(err);
+  }
+});
+
+
 router.put("/addFriend/:_id", auth, async (req, res) => {
     try {
       const user = await User.findOne({ _id: req.params._id });
