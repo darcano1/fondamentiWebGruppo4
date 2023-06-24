@@ -25,7 +25,7 @@ export default function Head({ amici, handleAmici, handleNewChat}) {
             <Container fluid className="d-flex flex-row">
                 <h1 className="me-auto ms-3 mt-2">{amici ? "Amici" : "Chats"}</h1>
 
-                <div id="buttons-left-container" className="input-group d-flex flex-row">
+                <div id="buttons-left-container" className="btn-group d-flex flex-row ">
                     <Button id="nuovoAmico" className="input-group-text shadow-sm me-2" onClick={aggiungiAmico}>
                         <FontAwesomeIcon icon={faPlusCircle} style={{color:'black'}}/>
                     </Button>

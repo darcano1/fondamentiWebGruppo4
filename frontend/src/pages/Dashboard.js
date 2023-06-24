@@ -13,7 +13,7 @@ export default function Dashboard()  {
   }
 
   const [chatAperta, setChatAperta] = useState(false);
-  const [contenutoChatAperta, setContenutoChatAperta] = useState(false);
+  const [contenutoChatAperta, setContenutoChatAperta] = useState([]);
   function handleChatAperta(e, amico) { 
       e.preventDefault();
       setChatAperta(amico);

@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { ListGroup, Image, Badge } from "react-bootstrap";
 import axios from "axios";
 
-export default function Chat({ chat }) {
+export default function Chat({ chat, handleChatAperta }) {
   const config = {
     headers: { "x-access-token": localStorage.getItem("token") },
   };
@@ -37,7 +37,7 @@ export default function Chat({ chat }) {
   }, []);
 
   return (
-    <li className="list-group-item d-flex p-1" aria-current="true">
+    <li className="list-group-item d-flex p-1" aria-current="true" onClick={(e) => handleChatAperta(e, utente)}>
 
       {/* immagine IMG-DIV */}
       <div className="container img-div m-1 text-center">
