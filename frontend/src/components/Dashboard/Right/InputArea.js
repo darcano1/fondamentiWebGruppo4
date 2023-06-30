@@ -16,28 +16,22 @@ export default function InputArea({idUtente}) { //idUtente contiene l'id dell'ut
         console.log(messaggio);
 
         //Richiede i messaggi della chat con l'utente selezionato
-        axios.get('http://localhost:4001/api/chat/find/' + localStorage.getItem('_id') +'/' + idUtente, config)
-        .then( res => { 
-            // if (res.data === null) IN SOSPESO, CHIEDERE A DANILO
-                // Creazione nuova chat o se è presente ritorna il conversationId
-                console.log("chat vuota");
                 axios.post("http://localhost:4001/api/chat/", {
                             senderId: localStorage.getItem('_id'),
                             receiverId: idUtente,
                         }, config)
                         .then( res => {
-                            //console.log(res.data._id); ID conversazione
+                            console.log(res); //ID conversazione
 
                             // Caricamento nuovo messaggio sul db
                             creaNuovoMessaggio(res.data._id);
+                        
 
                         })
                         .catch( err => {
                             console.log(err);
                         });
-        })
-        .catch( err => console.log(err.response));
-
+        
         // Reset dell'input text del messaggio
         document.getElementById("input-messaggio").value = "";
     }

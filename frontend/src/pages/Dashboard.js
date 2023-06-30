@@ -23,25 +23,25 @@ export default function Dashboard()  {
   }
 
   function handleChatAperta(e, amico) { 
-      e.preventDefault();
-      setChatAperta(amico);
-
-      //Richiede l'id della chat con l'utente selezionato
-      axios.get('http://localhost:4001/api/chat/find/' + localStorage.getItem('_id') +'/' + chatAperta._id, config)
-      .then( res => { 
-
+    e.preventDefault();
+    setChatAperta(amico);
+    console.log("chat aperta " + chatAperta._id);
+    // Richiede l'id della chat con l'utente selezionato
+    axios.get('http://localhost:4001/api/chat/find/' + localStorage.getItem('_id') + '/' + chatAperta._id, config) //LA PRIMA VOLTA CHE SI CLICCA SU UNA CHAT NON FUNZIONA, LA SECONDA SI
+      .then(res => { 
+        console.log("res " + res.data);
+  
         // Richiede i messaggi della chat con l'utente selezionato
-        axios.get('http://localhost:4001/api/messages/64919d2931cfb40b7498afb6', config) //togliere id per testing e mettere + res.data._id, config 64919d2931cfb40b7498afb6
-        .then( res => { 
-          handleContenutoChatAperta(res.data);
-          //console.log("Ricevuti messaggi: " + res.data[0]); 
+        axios.get('http://localhost:4001/api/messages/' + res.data._id, config)
+          .then(res => { 
+            handleContenutoChatAperta(res.data);
+            // console.log("Ricevuti messaggi: " + res.data[0]); 
           })
-          .catch( err => console.log(err.response));
-
-        })
-        .catch( err => console.log(err.response));
+          .catch(err => console.log(err.response));
+      })
+      .catch(err => console.log(err.response));
   };
-
+  
   function handleContenutoChatAperta(data) {
 
       setContenutoChatAperta(data);

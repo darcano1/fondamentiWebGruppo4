@@ -38,7 +38,8 @@ export default function Chat({ chat, handleChatAperta }) {
   }, []);
 
   return (
-    <li className="list-group-item d-flex p-1" aria-current="true"  onClick={(e) => handleChatAperta(e, utente)}>
+
+    <li className="list-group-item d-flex p-1" aria-current="true"  onClick={(e) => {handleChatAperta(e, utente); console.log(utente)}}>
 
       {/* immagine IMG-DIV */}
       <div className="container img-div m-1 text-center">
