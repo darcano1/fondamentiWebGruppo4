@@ -13,6 +13,7 @@ export default function Chat({ chat, handleChatAperta }) {
   const [messages, setMessages] = useState([]);
 
   useEffect(() => {
+    
     async function getUser(id) {
       axios
         .get("http://localhost:4001/api/user/profile/" + id, config)
@@ -37,7 +38,7 @@ export default function Chat({ chat, handleChatAperta }) {
   }, []);
 
   return (
-    <li className="list-group-item d-flex p-1" aria-current="true" onClick={(e) => handleChatAperta(e, utente)}>
+    <li className="list-group-item d-flex p-1" aria-current="true"  onClick={(e) => handleChatAperta(e, utente)}>
 
       {/* immagine IMG-DIV */}
       <div className="container img-div m-1 text-center">
@@ -63,7 +64,7 @@ export default function Chat({ chat, handleChatAperta }) {
           </Badge>
         </div> */}
         <div className="position-absolute bottom-0 end-0 m-2">
-          <p className="paragraph block time m-0">AGGIUNGERE</p>
+          <p className="paragraph block time m-0"> AGGIUNGERE </p>
         </div>
       </div>
     </li>

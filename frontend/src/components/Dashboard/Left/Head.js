@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Container, Button, InputGroup, FormControl } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faUsers, faSignOut, faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 
-export default function Head({ amici, handleAmici, handleNewChat}) {
+
+export default function Head({ amici, handleAmici, handleNewChat, handleAggiungiAmico}) {
 
     const navigate = useNavigate();
 
@@ -13,20 +14,12 @@ export default function Head({ amici, handleAmici, handleNewChat}) {
         navigate('/');
     }
 
-    function aggiungiAmico(){
-        
-        // Logica per div in sovraimpressione
-
-
-    }
-
     return (
         <>
             <Container fluid className="d-flex flex-row">
                 <h1 className="me-auto ms-3 mt-2">{amici ? "Amici" : "Chats"}</h1>
-
-                <div id="buttons-left-container" className="btn-group d-flex flex-row ">
-                    <Button id="nuovoAmico" className="input-group-text shadow-sm me-2" onClick={aggiungiAmico}>
+                <div id="buttons-left-container" className="input-group d-flex flex-row">
+                    <Button id="nuovoAmico" className="input-group-text shadow-sm me-2" onClick={handleAggiungiAmico}>
                         <FontAwesomeIcon icon={faPlusCircle} style={{color:'black'}}/>
                     </Button>
                     <Button id="amici" className="input-group-text shadow-sm me-2" onClick={handleAmici} style={amici ? {backgroundColor: 'lightgrey'} : null}>

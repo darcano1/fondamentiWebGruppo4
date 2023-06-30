@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import LeftContainer from '../components/Dashboard/Left/LeftContainer'
 import RightContainer from '../components/Dashboard/Right/RightContainer'
+import WindowAggiuntaAmico from '../components/Dashboard/Left/WindowAggiuntaAmico.js';
 
 export default function Dashboard()  {
 
@@ -14,6 +15,13 @@ export default function Dashboard()  {
 
   const [chatAperta, setChatAperta] = useState(false);
   const [contenutoChatAperta, setContenutoChatAperta] = useState([]);
+  const [aggiuntaAmico, setAggiuntaAmico] = useState(false);
+
+  function handleAggiungiAmico(){
+    // Logica per div in sovraimpressione
+    setAggiuntaAmico(!aggiuntaAmico);
+  }
+
   function handleChatAperta(e, amico) { 
       e.preventDefault();
       setChatAperta(amico);
@@ -23,7 +31,7 @@ export default function Dashboard()  {
       .then( res => { 
 
         // Richiede i messaggi della chat con l'utente selezionato
-        axios.get('http://localhost:4001/api/messages/64919d2931cfb40b7498afb6') //togliere id per testing e mettere + res.data._id, config
+        axios.get('http://localhost:4001/api/messages/64919d2931cfb40b7498afb6', config) //togliere id per testing e mettere + res.data._id, config 64919d2931cfb40b7498afb6
         .then( res => { 
           handleContenutoChatAperta(res.data);
           //console.log("Ricevuti messaggi: " + res.data[0]); 
@@ -41,10 +49,13 @@ export default function Dashboard()  {
   }
 
   return (
+    <>     
+    {aggiuntaAmico && <WindowAggiuntaAmico handleAggiungiAmico={handleAggiungiAmico}/>}
     <Container fluid className="d-flex flex-row p-0 justify-content-center" id="all-container">
-      <LeftContainer handleChatAperta={handleChatAperta}/>
+      <LeftContainer handleChatAperta={handleChatAperta} handleAggiungiAmico={handleAggiungiAmico}/>
       <RightContainer chatAperta={chatAperta} contenutoChatAperta={contenutoChatAperta}/>
     </Container>
+    </>   
   )
 
 };
