@@ -38,12 +38,13 @@ export default function LeftContainer({handleChatAperta, handleAggiungiAmico}) {
             .then(res => { setElencoIdAmici(res.data) })
             .catch(err => console.log(err.response));
         }
-    }, [listaAmici/*, elencoChat, elencoIdAmici*/]) // BOOOOOOOOOOM
+        console.log(elencoIdAmici);
+    }, [listaAmici/*,elencoChat, elencoIdAmici*/]) // BOOOOOOOOOOM
 
     return (
         <Container fluid className="d-flex flex-column flex-shrink-1" id="left-container">
             <Head amici={listaAmici} handleAmici={handleListaAmici} handleAggiungiAmico={handleAggiungiAmico}/>
-            <ListaChat lista={listaAmici ? elencoIdAmici : elencoChat} amici={listaAmici} handleChatAperta={handleChatAperta} />
+            <ListaChat lista={listaAmici ? elencoIdAmici : elencoChat} amici={listaAmici} handleChatAperta={handleChatAperta} setElencoIdAmici={setElencoIdAmici} elencoIdAmici={elencoIdAmici}/>
         </Container>
     )
 }

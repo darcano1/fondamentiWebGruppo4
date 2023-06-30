@@ -4,6 +4,7 @@ import { Container, Button, InputGroup, FormControl } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmarkCircle, faPlus } from '@fortawesome/free-solid-svg-icons';
 import axios from "axios";
+import { aggiornaAmici } from "./LeftContainer";
 
 export default function WindowAggiuntaAmico({handleAggiungiAmico}) {
 
@@ -15,23 +16,31 @@ export default function WindowAggiuntaAmico({handleAggiungiAmico}) {
     function aggiungiAmico(){
 
         // codice axios per aggiunta amico
-        /*axios.post("http://localhost:4001/api/user/addFriend/", {
-                            senderId: localStorage.getItem('_id'),
-                            receiverId: idUtente,
-                        }, config)
-                        .then( res => {
-                            //console.log(res.data._id); ID conversazione
 
-                            // Caricamento nuovo messaggio sul db
-                            creaNuovoMessaggio(res.data._id);
+        // richiesta per ottenere id amico
+        axios.get('http://localhost:4001/api/user/' + username, config)
+        .then(res => res.data)
+        .then(utente => {
+            console.log(utente);
+            // Reset dell'input text del messaggio
+            document.getElementById("input-messaggio").value = "";
 
-                        })
-                        .catch( err => {
-                            console.log(err);
-                        });*/
-
-        // Reset dell'input text del messaggio
-        document.getElementById("input-messaggio").value = "";
+            console.log(utente);
+            axios.put("http://localhost:4001/api/user/addFriend/" + utente._id, {}, config)
+                            .then( res => {
+                                console.log("id amico preso");
+                                //console.log(res);
+                                //aggiornaAmici
+                            })
+                            .catch( err => {
+                                console.log(err);
+                            });
+          })
+          .catch( err => {
+            console.log(err); 
+            //Utente non trovato
+            //Aggiornare stato che fa apparire il messaggio
+        });
 
     }
 

@@ -31,7 +31,7 @@ export default function Dashboard()  {
       .then( res => { 
 
         // Richiede i messaggi della chat con l'utente selezionato
-        axios.get('http://localhost:4001/api/messages/64919d2931cfb40b7498afb6') //togliere id per testing e mettere + res.data._id, config
+        axios.get('http://localhost:4001/api/messages/64919d2931cfb40b7498afb6', config) //togliere id per testing e mettere + res.data._id, config 64919d2931cfb40b7498afb6
         .then( res => { 
           handleContenutoChatAperta(res.data);
           //console.log("Ricevuti messaggi: " + res.data[0]); 
