@@ -6,7 +6,7 @@ const userSchema = mongoose.Schema(
     username: { type: String, required: true, unique: true },
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
-    profilePic: { type: String, default: "" },
+    profilePic: { type: String, default: "http://localhost:4001/images/default.png" },
     isAdmin: { type: Boolean, default: false },
     token: { type: String },
     friendList: { type: Array, default: [] },
