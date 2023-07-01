@@ -12,7 +12,10 @@ const messagesSchema = mongoose.Schema(
           type: String,
         },
       },
-      { timestamps: true }
+      {
+        timestamps: {
+          currentTime: () => moment().tz("Europe/Rome").format("YYYY-MM-DD HH:mm:ss"),
+        }, }
     );
 
 module.exports = mongoose.model("Message", messagesSchema);
