@@ -59,7 +59,7 @@ export default function Amico({ amico, handleChatAperta, updateListaAmici, setEl
       <div className="container user-msg-div p-0">
         <h5 className="username-chat mt-2 text-start">{amico.username}</h5>
         <p className="messaggio-chat m-0 mt-2">
-          {messages.length > 0 ? messages[messages.length - 1] : null}
+          {/*messages.length > 0 ? messages[messages.length - 1] : null*/}
         </p>
         {/* AGGIUNGERE BOTTONE ELIMINAZIONE AMICO */}
         <Button id="chiudiWindow" className="input-group-text" onClick={e => {

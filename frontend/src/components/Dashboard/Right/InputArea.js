@@ -25,15 +25,11 @@ export default function InputArea({idUtente}) { //idUtente contiene l'id dell'ut
 
                             // Caricamento nuovo messaggio sul db
                             creaNuovoMessaggio(res.data._id);
-                        
 
                         })
                         .catch( err => {
                             console.log(err);
                         });
-        
-        // Reset dell'input text del messaggio
-        document.getElementById("input-messaggio").value = "";
     }
 
     function creaNuovoMessaggio(idChat){
@@ -44,9 +40,10 @@ export default function InputArea({idUtente}) { //idUtente contiene l'id dell'ut
             text: messaggio,
                 }, config)
                 .then( res => {
-
+                    // Reset dell'input text del messaggio
+                    document.getElementById("input-messaggio").value = "";
+                    setMessaggio("");
                     // Si possono implementare controlli su invio del messaggio
-
                     //console.log(res.data);
                     })
                     .catch( err => {

@@ -25,16 +25,18 @@ export default function Dashboard()  {
   function handleChatAperta(e, amico) { 
     e.preventDefault();
     setChatAperta(amico);
-    console.log("chat aperta " + chatAperta._id);
+
+    //console.log("chat aperta " + chatAperta._id);
     // Richiede l'id della chat con l'utente selezionato
-    axios.get('http://localhost:4001/api/chat/find/' + localStorage.getItem('_id') + '/' + chatAperta._id, config) //LA PRIMA VOLTA CHE SI CLICCA SU UNA CHAT NON FUNZIONA, LA SECONDA SI
+    axios.get('http://localhost:4001/api/chat/find/' + localStorage.getItem('_id') + '/' + amico._id, config) //LA PRIMA VOLTA CHE SI CLICCA SU UNA CHAT NON FUNZIONA, LA SECONDA SI
       .then(res => { 
-        console.log("res " + res.data);
+        //console.log("res " + res.data);
   
         // Richiede i messaggi della chat con l'utente selezionato
         axios.get('http://localhost:4001/api/messages/' + res.data._id, config)
           .then(res => { 
             handleContenutoChatAperta(res.data);
+            console.log(res);
             // console.log("Ricevuti messaggi: " + res.data[0]); 
           })
           .catch(err => console.log(err.response));
