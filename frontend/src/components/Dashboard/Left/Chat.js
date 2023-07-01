@@ -11,6 +11,7 @@ export default function Chat({ chat, handleChatAperta }) {
   // prende messaggi e dati utenti per la chat
   const [utente, setUtente] = useState({});
   const [messages, setMessages] = useState([]);
+  const [lastMessage, setLastMessage] = useState({text: "no-message"});
 
   useEffect(() => {
     
@@ -27,14 +28,25 @@ export default function Chat({ chat, handleChatAperta }) {
       getUser(chat.members[0]);
     }
 
-    // prende messaggi
-    axios
-      .get("http://localhost:4001/api/messages/" + chat._id)
-      .then( res => {
-        setMessages(res.data);
-        console.log("test" + res);
-      })
-      .catch( err => console.log(err.response));
+    // Richiede l'id della chat con l'utente selezionato
+    axios.get('http://localhost:4001/api/chat/find/' + localStorage.getItem('_id') + '/' + utente._id, config)
+    .then(res => { 
+      //console.log("res " + res.data);
+
+      // Richiede i messaggi della chat con l'utente selezionato
+      axios.get('http://localhost:4001/api/messages/' + res.data._id, config)
+        .then(res => { 
+          console.log("test");
+          console.log(res.data);
+          setMessages(res.data);
+          setLastMessage({text: res.data.text})
+          console.log(messages);
+          // console.log("Ricevuti messaggi: " + res.data[0]); 
+        })
+        .catch(err => console.log(err.response));
+    })
+    .catch(err => console.log(err.response));
+
   }, []);
 
   return (
@@ -53,7 +65,8 @@ export default function Chat({ chat, handleChatAperta }) {
       <div className="container user-msg-div p-0">
         <h5 className="username-chat mt-2 text-start">{utente.username}</h5>
         <p className="messaggio-chat m-0 mt-2">
-          {/* messages.length > 0 ? messages[messages.length - 1] : null */}
+          {lastMessage.text}
+          {messages.length !== 0 ? messages[messages.length - 1].text : <p>Ultimo messaggio</p>}
         </p>
       </div>
 
@@ -65,7 +78,7 @@ export default function Chat({ chat, handleChatAperta }) {
           </Badge>
         </div> */}
         <div className="position-absolute bottom-0 end-0 m-2">
-          <p className="paragraph block time m-0"> AGGIUNGERE </p>
+          <p className="paragraph block time m-0"> {/*messages[messages.length - 1].updatedAt.substring(8, 10) + "/" + messages[messages.length - 1].updatedAt.substring(5, 7) + " " + messages[messages.length - 1].updatedAt.substring(11, 16)*/} </p> 
         </div>
       </div>
     </li>

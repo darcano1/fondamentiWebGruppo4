@@ -354,8 +354,10 @@
   }
   
   .friend-message p {
+    text-align: left;
+    flex-direction: row;
     margin-right: 20%;
-    background-color: lightcoral;
+    background-color: coral;
   }
   
   #message-area::-webkit-scrollbar {

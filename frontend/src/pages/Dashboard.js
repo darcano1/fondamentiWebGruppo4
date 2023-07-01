@@ -26,9 +26,8 @@ export default function Dashboard()  {
     e.preventDefault();
     setChatAperta(amico);
 
-    //console.log("chat aperta " + chatAperta._id);
     // Richiede l'id della chat con l'utente selezionato
-    axios.get('http://localhost:4001/api/chat/find/' + localStorage.getItem('_id') + '/' + amico._id, config) //LA PRIMA VOLTA CHE SI CLICCA SU UNA CHAT NON FUNZIONA, LA SECONDA SI
+    axios.get('http://localhost:4001/api/chat/find/' + localStorage.getItem('_id') + '/' + amico._id, config)
       .then(res => { 
         //console.log("res " + res.data);
   
@@ -45,7 +44,6 @@ export default function Dashboard()  {
   };
   
   function handleContenutoChatAperta(data) {
-
       setContenutoChatAperta(data);
       //console.log("Messaggi" + data);
   }
