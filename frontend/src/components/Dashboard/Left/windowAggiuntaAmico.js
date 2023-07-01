@@ -16,19 +16,19 @@ export default function WindowAggiuntaAmico({handleAggiungiAmico}) {
     function aggiungiAmico(){
 
         // codice axios per aggiunta amico
-
+        
         // richiesta per ottenere id amico
         axios.get('http://localhost:4001/api/user/' + username, config)
         .then(res => res.data)
         .then(utente => {
-            console.log(utente);
+            //console.log(utente);
             // Reset dell'input text del messaggio
             document.getElementById("input-messaggio").value = "";
 
-            console.log(utente);
+            //console.log(utente);
             axios.put("http://localhost:4001/api/user/addFriend/" + utente._id, {}, config)
                             .then( res => {
-                                console.log("id amico preso");
+                                //console.log("id amico preso");
                                 //console.log(res);
                                 //aggiornaAmici
                             })

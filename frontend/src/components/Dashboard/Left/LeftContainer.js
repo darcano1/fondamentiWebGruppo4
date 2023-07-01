@@ -8,23 +8,19 @@ import ListaChat from "./ListaChat";
 
 export default function LeftContainer({handleChatAperta, handleAggiungiAmico}) {
 
-    // header token 
+    // HEADER TOKEN 
     const config = { headers:
         {"x-access-token": localStorage.getItem("token")}
     }
 
-    // stato per amici
+    // STATO PER SELEZIONARE SOLO AMICI
     const [listaAmici, setListaAmici] = useState(false)
     function handleListaAmici(e) { 
         e.preventDefault();
         setListaAmici(!listaAmici)
     };
 
-    function handleNewChat(e){
-
-    }
-
-    // prende tutte le chat
+    // PRENDO TUTTE LE CHAT
     const [elencoChat, setElencoChat] = useState([]);
     const [elencoIdAmici, setElencoIdAmici] = useState([]);
     useEffect( () => {
@@ -32,14 +28,13 @@ export default function LeftContainer({handleChatAperta, handleAggiungiAmico}) {
         .then( res => { setElencoChat(res.data) })
         .catch( err => console.log(err.response));
 
-        // amici
+        // AMICI
         if(listaAmici) {
             axios.get('http://localhost:4001/api/user/friendList/'+ localStorage.getItem("_id"), config)
             .then(res => { setElencoIdAmici(res.data) })
             .catch(err => console.log(err.response));
         }
-        console.log(elencoIdAmici);
-    }, [listaAmici/*,elencoChat, elencoIdAmici*/]) // BOOOOOOOOOOM
+    }, [listaAmici/*,elencoChat, elencoIdAmici*/])
 
     return (
         <Container fluid className="d-flex flex-column flex-shrink-1" id="left-container">

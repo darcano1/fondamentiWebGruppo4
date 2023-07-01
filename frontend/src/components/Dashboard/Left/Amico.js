@@ -6,6 +6,7 @@ import { faXmarkCircle } from '@fortawesome/free-solid-svg-icons';
 
 
 export default function Amico({ amico, handleChatAperta, updateListaAmici, setElencoIdAmici, elencoIdAmici }) {
+
   // header token
   const config = {
     headers: { "x-access-token": localStorage.getItem("token") },
@@ -33,7 +34,7 @@ export default function Amico({ amico, handleChatAperta, updateListaAmici, setEl
     axios.put("http://localhost:4001/api/user/removeFriend/" + amico._id, {}, config)
                         .then( res => {
                             //CODICE PER ELIMINARE AMICO DALLA LISTA CHAT AMICI
-                            console.log("amico eliminato");
+                            //console.log("amico eliminato");
                             setElencoIdAmici(elencoIdAmici.filter(el => el !== amico._id))
                             updateListaAmici(amico);
                         })
@@ -42,8 +43,6 @@ export default function Amico({ amico, handleChatAperta, updateListaAmici, setEl
                         });
 
   }
-  
-  //console.log(messages);
 
   return (
     <li className="list-group-item d-flex p-1" aria-current="true" onClick={(e) => handleChatAperta(e, amico)}>
@@ -57,17 +56,11 @@ export default function Amico({ amico, handleChatAperta, updateListaAmici, setEl
 
       {/* username e messaggio USER-MSG-DIV */}
       <div className="container user-msg-div p-0">
-        <h5 className="username-chat mt-2 text-start">{amico.username}</h5>
-        <p className="messaggio-chat m-0 mt-2">
-          {/*messages.length > 0 ? messages[messages.length - 1] : null*/}
+        <h5 className="username-chat mt-2 text-start px-2">{amico.username}</h5>
+        <p className="messaggio-chat m-0 mt-2 text-start px-2">
+          {messages.length !== 0 ? messages[messages.length - 1].text : <p> Nessun messaggio </p>}
         </p>
-        {/* AGGIUNGERE BOTTONE ELIMINAZIONE AMICO */}
-        <Button id="chiudiWindow" className="input-group-text" onClick={e => {
-          e.stopPropagation();
-          eliminaAmico();
-          }}>
-          <FontAwesomeIcon icon={faXmarkCircle} style={{color:'red'}}/>
-        </Button>
+        
       </div>
 
       {/* orario e non letti DETAILS-DIV */}
@@ -77,8 +70,14 @@ export default function Amico({ amico, handleChatAperta, updateListaAmici, setEl
                 5
               </Badge>
             </div> */}
+        <Button id="chiudiWindow" className="input-group-text buttonEliminaAmico" onClick={e => {
+          e.stopPropagation();
+          eliminaAmico();
+          }}>
+          <FontAwesomeIcon icon={faXmarkCircle} style={{color:'red'}}/>
+        </Button>
         <div className="position-absolute bottom-0 end-0 m-2">
-          <p className="paragraph block time m-0"> {/* Messaggio al posto di orario mancante */} </p>
+          <p className="paragraph block time m-0"> {messages.length !== 0 ? messages[messages.length - 1].updatedAt.substring(8, 10) + "/" + messages[messages.length - 1].updatedAt.substring(5, 7) + " " + messages[messages.length - 1].updatedAt.substring(11, 16) : "" } </p>
         </div>
       </div>
     </li>
