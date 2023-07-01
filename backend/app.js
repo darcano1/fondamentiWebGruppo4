@@ -26,17 +26,15 @@ const storage = multer.diskStorage({
     cb(null, "public/images");
   },
   filename: (req, file, cb) => {
-    cb(null, req.body.name);
+    //salvo il file in base alla data di caricamento
+    cb(null, Date.now()+file.originalname);
   },
 });
 
 const upload = multer({ storage: storage });
 app.post("/api/upload", upload.single("file"), (req, res) => {
-  try {
-    return res.status(200).json("File uploaded successfully");
-  } catch (error) {
-    console.error(error);
-  }
+  console.log(req.file);
+  res.json({message: "http://localhost:4001/images/" + req.file.filename});
 });
 
 
