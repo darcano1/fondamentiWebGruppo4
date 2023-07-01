@@ -3,28 +3,21 @@ const Chat = require("../models/db_chat.model");
 
 // new chat
 router.post("/", async (req, res) => {
-
     const newChat = new Chat({
         members: [req.body.senderId, req.body.receiverId],
     });
-    //creo la chat con i due utenti, se la chat esiste già non la ricreo
+
     try {
-        if (await Chat.findOne({ members: { $all: [req.body.senderId, req.body.receiverId] } })) {
-            //stampo id della chat già esistente
-            const chat = await Chat.findOne({ members: { $all: [req.body.senderId, req.body.receiverId] } });
-            res.status(200).json(chat);
-        }
-        else {
         const savedChat = await newChat.save();
-        res.status(200).json(savedChat);}
+        if (!savedChat) {
+            return res.status(404).send("Chat non trovata");
+        }
+        res.status(200).json(savedChat);
     }
     catch (err) {
         res.status(500).json(err);
     }
-}
-);
-
-
+});
 
 router.get("/:userId", async (req, res) => {
     try {
