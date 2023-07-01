@@ -23,7 +23,7 @@ router.post("/register", async (req, res) => {
             password: encryptedPassword,
             username: username,
             isAdmin: false,
-            profilePic: "",
+            profilePic: user.profilePic,
             friendList: [],
         });
         const token = jwt.sign(
@@ -40,6 +40,7 @@ router.post("/register", async (req, res) => {
             username: user.username,
             email: user.email,
             token: user.token,
+            profilePic: user.profilePic,
         });
     } catch (err) {
         console.log(err);
@@ -67,6 +68,7 @@ router.post("/login", async (req, res) => {
                 username: user.username,
                 email: user.email,
                 token: user.token,
+                profilePic: user.profilePic,
             });
         }
         return res.status(400).send("Credenziali non valide");
