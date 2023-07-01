@@ -7,6 +7,12 @@ const helmet = require("helmet");
 const morgan = require("morgan");
 const cors = require('cors')
 
+app.use("/images", express.static(__dirname + "/public/images", {
+  setHeaders: function (res) {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+  }
+}));
+
 const authRoute = require("./routes/auth.route");
 const userRoute = require("./routes/user.route");
 const messagesRoute = require("./routes/messages.route");
@@ -18,7 +24,11 @@ app.use(morgan("common"));
 app.use(cors())
 
 
-app.use("/images", express.static(__dirname + "/public/images"));
+
+
+
+
+
 
 
 const storage = multer.diskStorage({
