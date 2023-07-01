@@ -10,12 +10,14 @@ const userSchema = mongoose.Schema(
     isAdmin: { type: Boolean, default: false },
     token: { type: String },
     friendList: { type: Array, default: [] },
+  createdAt: {
+    type: Date,
+    default: () => moment().add(2, 'hours'),
   },
-  {
-    timestamps: {
-      currentTime: () => moment().tz("Europe/Rome").format("YYYY-MM-DD HH:mm:ss"),
-    },
-  }
+  updatedAt: {
+    type: Date,
+    default: () => moment().add(2, 'hours'),
+  },}
 );
 
 module.exports = mongoose.model("user", userSchema);

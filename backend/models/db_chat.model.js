@@ -8,9 +8,14 @@ const chatSchema = mongoose.Schema(
         },
       },
       {
-        timestamps: {
-          currentTime: () => moment().tz("Europe/Rome").format("YYYY-MM-DD HH:mm:ss"),
+        createdAt: {
+          type: Date,
+          default: () => moment().add(2, 'hours'),
+        },
+        updatedAt: {
+          type: Date,
+          default: () => moment().add(2, 'hours'),
         },}
-    );
+      );
 
 module.exports = mongoose.model("Chat", chatSchema);
