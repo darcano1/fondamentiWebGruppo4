@@ -44,7 +44,6 @@ export default function Chat({ chat, handleChatAperta, amici, date, setIsChatApe
       {/* immagine IMG-DIV */}
       <div className="container img-div m-1 text-center">
         <Image
-          alt={utente.username}
           src={utente.profilePic}
         />
       </div>
@@ -59,11 +58,6 @@ export default function Chat({ chat, handleChatAperta, amici, date, setIsChatApe
 
       {/* orario e non letti DETAILS-DIV */}
       <div className="container details-div p-0">
-        {/* <div className="position-absolute top-0 end-0 m-2">
-          <Badge pill variant="warning" text="dark">
-            5
-          </Badge>
-        </div> */}
         <div className="position-absolute bottom-0 end-0 m-2">
           <p className="paragraph block time m-0"> {(date.day == lastMessage.orario.substring(8, 10) && date.month == lastMessage.orario.substring(5, 7) && date.year == lastMessage.orario.substring(0, 4)) ? "oggi " + lastMessage.orario.substring(11, 16) : (lastMessage.orario.substring(8, 10) + "/" + lastMessage.orario.substring(5, 7) + " " + lastMessage.orario.substring(11, 16))} </p> 
         </div>

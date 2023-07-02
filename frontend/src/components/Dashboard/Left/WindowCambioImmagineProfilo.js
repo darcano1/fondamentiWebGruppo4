@@ -59,7 +59,7 @@ export default function WindowAggiuntaAmico({handleCambiaImmagineProfilo, setCam
                 <Button id="chiudiWindow" className="input-group-text" onClick={handleCambiaImmagineProfilo}>
                     <FontAwesomeIcon icon={faXmarkCircle} style={{color:'gray'}}/>
                 </Button>
-                <h1>Inserisci immagine profilo</h1>
+                <h1> {localStorage.getItem("username")}, cambia l'immagine profilo</h1>
                 <InputGroup id="scrivi-messaggio" className="input-group ms-2 flex-shrink-1 inputAggiungiAmico">
                     <FormControl id="input-messaggio" contentEditable="true" type="file" onChange={e => setImmagine(e.target.files[0])} onKeyDown={invio} className="shadow-sm ps-3 inputAggiungiAmico1" placeholder="Immagine" aria-label="testo" aria-describedby=""/>
                     <Button id="invia" className="input-group-text shadow-sm"><FontAwesomeIcon icon={faArrowUp} style={{color:'black'}} onMouseDown={caricaImmagine}/></Button>

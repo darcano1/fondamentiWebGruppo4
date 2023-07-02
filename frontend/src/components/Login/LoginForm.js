@@ -12,7 +12,7 @@ export default function LoginForm({ handleSubmit, messaggioServer }) {
         <Form.Control name="psw" className="inputForm" type="password" placeholder="Password" />
       </Form.Group>
       <Form.Group className="formButton">
-        {messaggioServer !== '' ? <Form.Floating className='mb-3' style={{color: 'red', fontSize: "1.1rem"} }>{messaggioServer}</Form.Floating> : null}
+        {messaggioServer !== '' ? <Form.Floating className='mb-3' style={{color: 'red', fontSize: "1.1rem"}}>{messaggioServer}</Form.Floating> : null}
         <Form.Control id="btn-signin" type="submit" className="btn btn-primary inputForm" value="Sign in" />
       </Form.Group>
     </Form>

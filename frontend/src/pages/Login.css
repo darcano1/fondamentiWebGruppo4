@@ -1,7 +1,6 @@
 body {
   height: 100%;
   width: 100%;
-  background-color: red;
   height: 100vh;
   text-align: center;
   display: flex;
@@ -15,7 +14,7 @@ body {
   margin: 5em;
   border-radius: 1em;
   -webkit-box-shadow: -2px 0px 40px 5px rgba(80,80,80,0.3); 
-box-shadow: -2px 0px 40px 5px rgba(80,80,80,0.3);
+  box-shadow: -2px 0px 40px 5px rgba(80,80,80,0.3);
   overflow: hidden;
 }
 
@@ -25,8 +24,7 @@ box-shadow: -2px 0px 40px 5px rgba(80,80,80,0.3);
 }
 
 #benvenuto {
-  background: rgb(41,93,248);
-background: linear-gradient(90deg, rgba(41,93,248,1) 0%, rgba(7,151,254,1) 100%);
+  background: linear-gradient(90deg, rgb(178, 195, 180)  0%, rgb(201, 210, 202) 100%);
   color: #FEFEFE;
   flex-grow: 1;
   flex-basis: 200em;
@@ -60,10 +58,6 @@ background: linear-gradient(90deg, rgba(41,93,248,1) 0%, rgba(7,151,254,1) 100%)
   background-color: #FEFEFE;
 }
 
-.inputForm:hover{
-  border-color: #295df8;
-}
-
 .formButton {
   margin-top: 4em;
   margin-inline: 5em;
@@ -77,13 +71,13 @@ background: linear-gradient(90deg, rgba(41,93,248,1) 0%, rgba(7,151,254,1) 100%)
 
 #login-register-active {
   background-color:#FEFEFE;
-  color: #295df8;
+  color: #010101;
   border-width: 0;
 }
 
 #login-register-inactive{
-  background-color:#afc4f7;
-  color: #295df8;
+  background-color:rgb(231, 229, 222);
+  color: #010101;
   border: 0;
 }
 
@@ -96,11 +90,11 @@ background: linear-gradient(90deg, rgba(41,93,248,1) 0%, rgba(7,151,254,1) 100%)
 
 #login-register-inactive:disabled,
 #login-register-active:disabled {
-  color: #295df8;
+  color: #010101;
 }
 
 #btn-signin {
-  background: linear-gradient(90deg, rgba(7,151,254,1) 0%, rgba(41,93,248,1) 100%);
+  background: linear-gradient(90deg, rgba(210, 220, 211, 1)0%,  rgb(178, 195, 180) 100%);
   border: 0;
 }
 

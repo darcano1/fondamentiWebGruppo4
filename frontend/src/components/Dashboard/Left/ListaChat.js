@@ -11,6 +11,7 @@ export default function ListaChat({ lista, amici, handleChatAperta, setElencoIdA
         headers: { "x-access-token": localStorage.getItem("token") },
     };
 
+    // PARAMETRI DATA PER IMPOSTARE IL GIUSTO ORARIO E GIORNO DEL MESSAGGIO
     const timeElapsed = Date.now();
     const today = new Date(timeElapsed);
   

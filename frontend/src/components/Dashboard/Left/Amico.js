@@ -12,6 +12,7 @@ export default function Amico({ amico, handleChatAperta, updateListaAmici, setEl
     headers: { "x-access-token": localStorage.getItem("token") },
   };
 
+  // PARAMETRI DATA PER IMPOSTARE IL GIUSTO ORARIO E GIORNO DEL MESSAGGIO
   const timeElapsed = Date.now();
   const today = new Date(timeElapsed);
   
@@ -26,10 +27,10 @@ export default function Amico({ amico, handleChatAperta, updateListaAmici, setEl
         .get("http://localhost:4001/api/chat/find/" + amico._id + "/" + localStorage.getItem("_id"))
         .then((res) => {
             if (res.data) {
-                axios
-                .get("http://localhost:4001/api/messages/" + res.data._id, config)
-                .then((res) => setMessages(res.data))
-                .catch((err) => console.log(err.response));
+              axios
+              .get("http://localhost:4001/api/messages/" + res.data._id, config)
+              .then((res) => setMessages(res.data))
+              .catch((err) => console.log(err.response));
             }
         })
       .catch((err) => console.log(err.response));
@@ -37,17 +38,17 @@ export default function Amico({ amico, handleChatAperta, updateListaAmici, setEl
   
   function eliminaAmico(){
 
-    //CODICE PER ELIMINARE AMICO
-    axios.put("http://localhost:4001/api/user/removeFriend/" + amico._id, {}, config)
-                        .then( res => {
-                            //CODICE PER ELIMINARE AMICO DALLA LISTA CHAT AMICI
-                            //console.log("amico eliminato");
-                            setElencoIdAmici(elencoIdAmici.filter(el => el !== amico._id))
-                            updateListaAmici(amico);
-                        })
-                        .catch( err => {
-                            console.log(err);
-                        });
+  //CODICE PER ELIMINARE AMICO
+  axios.put("http://localhost:4001/api/user/removeFriend/" + amico._id, {}, config)
+    .then( res => {
+        //CODICE PER ELIMINARE AMICO DALLA LISTA CHAT AMICI
+        //console.log("amico eliminato");
+        setElencoIdAmici(elencoIdAmici.filter(el => el !== amico._id))
+        updateListaAmici(amico);
+    })
+    .catch( err => {
+        console.log(err);
+    });
 
   }
 
@@ -56,7 +57,6 @@ export default function Amico({ amico, handleChatAperta, updateListaAmici, setEl
       {/* immagine IMG-DIV */}
       <div className="container img-div m-1 text-center">
         <Image
-          alt={"immagine di profilo di " + amico.username}
           src={amico.profilePic}
         />
       </div>
@@ -72,11 +72,6 @@ export default function Amico({ amico, handleChatAperta, updateListaAmici, setEl
 
       {/* orario e non letti DETAILS-DIV */}
       <div className="container details-div p-0">
-        {/* <div className="position-absolute top-0 end-0 m-2">
-              <Badge pill variant="warning" text="dark">
-                5
-              </Badge>
-            </div> */}
         <Button id="chiudiWindow" className="input-group-text buttonEliminaAmico" onClick={e => {
           e.stopPropagation();
           eliminaAmico();
@@ -91,5 +86,3 @@ export default function Amico({ amico, handleChatAperta, updateListaAmici, setEl
     </li>
   );
 }
- 
-//(messages.length !== 0 ? messages[messages.length - 1].updatedAt.substring(8, 10) + "/" + messages[messages.length - 1].updatedAt.substring(5, 7) + " " + messages[messages.length - 1].updatedAt.substring(11, 16))
