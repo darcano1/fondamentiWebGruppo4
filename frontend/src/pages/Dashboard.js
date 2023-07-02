@@ -7,6 +7,7 @@ import LeftContainer from '../components/Dashboard/Left/LeftContainer'
 import RightContainer from '../components/Dashboard/Right/RightContainer'
 import WindowAggiuntaAmico from '../components/Dashboard/Left/WindowAggiuntaAmico.js';
 import WindowCambioImmagineProfilo from '../components/Dashboard/Left/WindowCambioImmagineProfilo.js';
+
 export default function Dashboard()  {
 
     const config = { headers:
@@ -14,6 +15,7 @@ export default function Dashboard()  {
   }
 
   const [chatAperta, setChatAperta] = useState(false);
+  const [isChatAperta, setIsChatAperta] = useState(false);
   const [contenutoChatAperta, setContenutoChatAperta] = useState([]);
   const [aggiuntaAmico, setAggiuntaAmico] = useState(false);
   const [cambioImmagineProfilo, setCambioImmagineProfilo] = useState(false);
@@ -54,13 +56,21 @@ export default function Dashboard()  {
       //console.log("Messaggi" + data);
   }
 
+  // CHIUDE LA CHAT PREMENDO ESC
+  document.addEventListener("keydown", (e) => {
+    e.stopPropagation();
+    if (e.keyCode == 27) {
+      setIsChatAperta(false);
+    }
+  })
+
   return (
     <>     
     {aggiuntaAmico && <WindowAggiuntaAmico handleAggiungiAmico={handleAggiungiAmico} setAggiuntaAmico={setAggiuntaAmico}/>}
     {cambioImmagineProfilo && <WindowCambioImmagineProfilo handleCambiaImmagineProfilo={handleCambiaImmagineProfilo} setCambioImmagineProfilo={setCambioImmagineProfilo}/>}
     <Container fluid className="d-flex flex-row p-0 justify-content-center" id="all-container">
-      <LeftContainer handleChatAperta={handleChatAperta} handleAggiungiAmico={handleAggiungiAmico} handleCambiaImmagineProfilo={handleCambiaImmagineProfilo} aggiuntaAmico={aggiuntaAmico}/>
-      <RightContainer chatAperta={chatAperta} contenutoChatAperta={contenutoChatAperta}/>
+      <LeftContainer handleChatAperta={handleChatAperta} handleAggiungiAmico={handleAggiungiAmico} handleCambiaImmagineProfilo={handleCambiaImmagineProfilo} aggiuntaAmico={aggiuntaAmico} setIsChatAperta={setIsChatAperta}/>
+      <RightContainer chatAperta={chatAperta} contenutoChatAperta={contenutoChatAperta} isChatAperta={isChatAperta} setIsChatAperta={setIsChatAperta}/>
     </Container>
     </>   
   )

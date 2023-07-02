@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmarkCircle } from '@fortawesome/free-solid-svg-icons';
 
 
-export default function Amico({ amico, handleChatAperta, updateListaAmici, setElencoIdAmici, elencoIdAmici }) {
+export default function Amico({ amico, handleChatAperta, updateListaAmici, setElencoIdAmici, elencoIdAmici, setIsChatAperta }) {
 
   // header token
   const config = {
@@ -52,7 +52,7 @@ export default function Amico({ amico, handleChatAperta, updateListaAmici, setEl
   }
 
   return (
-    <li className="list-group-item d-flex p-1" aria-current="true" onClick={(e) => handleChatAperta(e, amico)}>
+    <li className="list-group-item d-flex p-1" aria-current="true" onClick={(e) => {handleChatAperta(e, amico); setIsChatAperta(true)}}>
       {/* immagine IMG-DIV */}
       <div className="container img-div m-1 text-center">
         <Image

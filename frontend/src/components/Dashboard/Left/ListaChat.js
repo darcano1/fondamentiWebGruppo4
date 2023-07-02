@@ -4,7 +4,7 @@ import axios from "axios";
 import Chat from "./Chat";
 import Amico from "./Amico";
 
-export default function ListaChat({ lista, amici, handleChatAperta, setElencoIdAmici, elencoIdAmici }) {
+export default function ListaChat({ lista, amici, handleChatAperta, setElencoIdAmici, elencoIdAmici, setIsChatAperta }) {
 
     // HEADER TOKEN
     const config = {
@@ -43,8 +43,8 @@ export default function ListaChat({ lista, amici, handleChatAperta, setElencoIdA
     return (
         <ul id="chat-list" className="list-group overflow-auto shadow-sm flex-grow-1 mb-2" >
         {amici
-            ? listaAmici.map( amico => <Amico amico={amico} key={amico._id} handleChatAperta={handleChatAperta} updateListaAmici={updateListaAmici} setElencoIdAmici={setElencoIdAmici} elencoIdAmici={elencoIdAmici}/>)
-            : lista.map( chatt => <Chat chat={chatt} key={chatt._id} handleChatAperta={handleChatAperta} amici={amici} date={date}/>)}
+            ? listaAmici.map( amico => <Amico amico={amico} key={amico._id} handleChatAperta={handleChatAperta} updateListaAmici={updateListaAmici} setElencoIdAmici={setElencoIdAmici} elencoIdAmici={elencoIdAmici} setIsChatAperta={setIsChatAperta}/>)
+            : lista.map( chatt => <Chat chat={chatt} key={chatt._id} handleChatAperta={handleChatAperta} amici={amici} date={date} setIsChatAperta={setIsChatAperta}/>)}
         </ul>
     );
 }

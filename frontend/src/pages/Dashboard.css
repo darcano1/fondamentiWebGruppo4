@@ -380,7 +380,7 @@
     text-align: left;
     flex-direction: row;
     margin-right: 20%;
-    background-color: rgba(150,151,254,1);
+    background-color: rgb(148, 209, 255);
   }
   
   #message-area::-webkit-scrollbar {

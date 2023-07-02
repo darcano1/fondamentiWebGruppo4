@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { Image, Badge } from "react-bootstrap";
 import axios from "axios";
 
-export default function Chat({ chat, handleChatAperta, amici, date }) {
+export default function Chat({ chat, handleChatAperta, amici, date, setIsChatAperta }) {
   const config = {
     headers: { "x-access-token": localStorage.getItem("token") },
   };
@@ -39,7 +39,7 @@ export default function Chat({ chat, handleChatAperta, amici, date }) {
 
   return (
 
-    <li className="list-group-item d-flex p-1" aria-current="true"  onMouseDown={(e) => {handleChatAperta(e, utente); console.log(utente)}}>
+    <li className="list-group-item d-flex p-1" aria-current="true"  onMouseDown={(e) => {handleChatAperta(e, utente); setIsChatAperta(true)}}>
 
       {/* immagine IMG-DIV */}
       <div className="container img-div m-1 text-center">
