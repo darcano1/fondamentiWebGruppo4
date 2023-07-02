@@ -23,7 +23,7 @@ router.get("/:username", auth, async (req, res) => {
 }
 );
 
-router.get("/profile/:_id", async (req, res) => {
+router.get("/profile/:_id", auth, async (req, res) => {
   try{
     const id = await User.findOne({ _id: req.params._id });
     if (!id) {
@@ -43,7 +43,7 @@ router.get("/profile/:_id", async (req, res) => {
   }
 });
 
-router.post("/profile/modify/:_id", async (req, res) => {
+router.post("/profile/modify/:_id", auth, async (req, res) => {
   try{
     const id = await User.findOne({ _id: req.params._id });
     if (!id) {
@@ -107,7 +107,7 @@ router.put("/removeFriend/:_id", auth, async (req, res) => {
   }
 );
 
-router.get("/friendList/:_id", async (req, res) => {
+router.get("/friendList/:_id", auth ,async (req, res) => {
     try {
       const user = await User.findOne({ _id: req.params._id });
       if (!user) {
@@ -120,6 +120,21 @@ router.get("/friendList/:_id", async (req, res) => {
     }
   }
 );
+
+router.post("/updateProfilePicture/:_id", auth, async (req, res) => {
+  try{
+    const user = await User.findOne({ _id: req.params._id });
+    if (!user) {
+      return res.status(404).send("Utente non trovato");
+    }
+    user.profilePic = req.body.profilePic;
+    await user.save();
+    res.status(200).send("Immagine profilo aggiornata correttamente");
+  }
+  catch(err){
+    console.log(err);
+  }
+});
 
 
 module.exports = router;
