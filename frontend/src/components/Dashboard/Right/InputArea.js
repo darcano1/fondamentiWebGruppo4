@@ -13,23 +13,24 @@ export default function InputArea({idUtente}) { //idUtente contiene l'id dell'ut
     const [messaggio, setMessaggio] = useState("");
 
     function sendMessage() {
-        //console.log(messaggio);
 
-        //Richiede i messaggi della chat con l'utente selezionato
-                axios.post("http://localhost:4001/api/chat/", {
-                            senderId: localStorage.getItem('_id'),
-                            receiverId: idUtente,
-                        }, config)
-                        .then( res => {
-                            //console.log(res); //ID conversazione
+        if (messaggio !== "") {
+            //Richiede i messaggi della chat con l'utente selezionato
+                    axios.post("http://localhost:4001/api/chat/", {
+                                senderId: localStorage.getItem('_id'),
+                                receiverId: idUtente,
+                            }, config)
+                            .then( res => {
+                                //console.log(res); //ID conversazione
 
-                            // Caricamento nuovo messaggio sul db
-                            creaNuovoMessaggio(res.data._id);
+                                // Caricamento nuovo messaggio sul db
+                                creaNuovoMessaggio(res.data._id);
 
-                        })
-                        .catch( err => {
-                            console.log(err);
-                        });
+                            })
+                            .catch( err => {
+                                console.log(err);
+                            });
+        }
     }
 
     function creaNuovoMessaggio(idChat){
