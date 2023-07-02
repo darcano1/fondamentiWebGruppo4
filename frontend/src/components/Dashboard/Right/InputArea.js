@@ -56,7 +56,7 @@ export default function InputArea({idUtente}) { //idUtente contiene l'id dell'ut
         <InputGroup id="scrivi-messaggio" className="input-group ms-2 flex-shrink-1">
             <Button id="photo" className="input-group-text shadow-sm"><FontAwesomeIcon icon={faImage} style={{color:'black'}}/></Button>
             <FormControl id="input-messaggio" contentEditable="true" value={messaggio} onChange={e => setMessaggio(e.target.value)} type="text" className="shadow-sm ps-2" placeholder="Scrivi un messaggio..." aria-label="testo" aria-describedby=""/>
-            <Button id="invia" className="input-group-text shadow-sm"><FontAwesomeIcon icon={faPaperPlane} style={{color:'black'}} onClick={sendMessage}/></Button>
+            <Button id="invia" className="input-group-text shadow-sm"><FontAwesomeIcon icon={faPaperPlane} style={{color:'black'}} onMouseDown={sendMessage}/></Button>
       </InputGroup>
     );
 }

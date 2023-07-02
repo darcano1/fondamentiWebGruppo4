@@ -7,7 +7,7 @@ export default function Head({username, profilePic}) {
             <div id="img-profilo" className="container img-div m-0 p-0 ">
                 <Image alt={username} src={profilePic} />
             </div>
-            <h1 className="username-chat ms-3 flex-grow-1 text-start"> {username} </h1>
+            <h1 className="username-chat ms-3 flex-grow-1 text-start" id={"username-chat-amico"}> {username} </h1>
         </Container>
     );
 }

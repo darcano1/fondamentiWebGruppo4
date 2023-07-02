@@ -12,6 +12,13 @@ export default function Amico({ amico, handleChatAperta, updateListaAmici, setEl
     headers: { "x-access-token": localStorage.getItem("token") },
   };
 
+  const timeElapsed = Date.now();
+  const today = new Date(timeElapsed);
+  
+  let month = today.getUTCMonth() + 1; //months from 1-12
+  let day = today.getUTCDate();
+  let year = today.getUTCFullYear();
+
   // prendere messaggi
   const [messages, setMessages] = useState([]);
   useEffect(() => {
@@ -58,7 +65,7 @@ export default function Amico({ amico, handleChatAperta, updateListaAmici, setEl
       <div className="container user-msg-div p-0">
         <h5 className="username-chat mt-2 text-start px-2">{amico.username}</h5>
         <p className="messaggio-chat m-0 mt-2 text-start px-2">
-          {messages.length !== 0 ? messages[messages.length - 1].text : <p> Nessun messaggio </p>}
+          {messages.length !== 0 && messages[messages.length - 1].text}
         </p>
         
       </div>
@@ -77,9 +84,12 @@ export default function Amico({ amico, handleChatAperta, updateListaAmici, setEl
           <FontAwesomeIcon icon={faXmarkCircle} style={{color:'red'}}/>
         </Button>
         <div className="position-absolute bottom-0 end-0 m-2">
-          <p className="paragraph block time m-0"> {messages.length !== 0 ? messages[messages.length - 1].updatedAt.substring(8, 10) + "/" + messages[messages.length - 1].updatedAt.substring(5, 7) + " " + messages[messages.length - 1].updatedAt.substring(11, 16) : "" } </p>
+          <p className="paragraph block time m-0"> {messages.length !== 0 ? ((day == messages[messages.length - 1].updatedAt.substring(8, 10) && month == messages[messages.length - 1].updatedAt.substring(5, 7) && year == messages[messages.length - 1].updatedAt.substring(0, 4)) ? "oggi " + messages[messages.length - 1].updatedAt.substring(11, 16) :
+          messages[messages.length - 1].updatedAt.substring(8, 10) + "/" + messages[messages.length - 1].updatedAt.substring(5, 7) + " " + messages[messages.length - 1].updatedAt.substring(11, 16)) : "" } </p>
         </div>
       </div>
     </li>
   );
 }
+ 
+//(messages.length !== 0 ? messages[messages.length - 1].updatedAt.substring(8, 10) + "/" + messages[messages.length - 1].updatedAt.substring(5, 7) + " " + messages[messages.length - 1].updatedAt.substring(11, 16))

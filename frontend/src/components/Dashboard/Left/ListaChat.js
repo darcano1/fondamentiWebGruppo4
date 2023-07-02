@@ -11,6 +11,15 @@ export default function ListaChat({ lista, amici, handleChatAperta, setElencoIdA
         headers: { "x-access-token": localStorage.getItem("token") },
     };
 
+    const timeElapsed = Date.now();
+    const today = new Date(timeElapsed);
+  
+    let month = today.getUTCMonth() + 1; //months from 1-12
+    let day = today.getUTCDate();
+    let year = today.getUTCFullYear();
+
+    let date = {day: day, month: month, year: year}
+
     // 'lista' è UN ELENCO DEGLI ID DEGLI AMICI
     // NE PRENDIAMO GLI USERNAME
     const [listaAmici, setListaAmici] = useState([]);
@@ -35,7 +44,7 @@ export default function ListaChat({ lista, amici, handleChatAperta, setElencoIdA
         <ul id="chat-list" className="list-group overflow-auto shadow-sm flex-grow-1 mb-2" >
         {amici
             ? listaAmici.map( amico => <Amico amico={amico} key={amico._id} handleChatAperta={handleChatAperta} updateListaAmici={updateListaAmici} setElencoIdAmici={setElencoIdAmici} elencoIdAmici={elencoIdAmici}/>)
-            : lista.map( chatt => <Chat chat={chatt} key={chatt._id} handleChatAperta={handleChatAperta} amici={amici}/>)}
+            : lista.map( chatt => <Chat chat={chatt} key={chatt._id} handleChatAperta={handleChatAperta} amici={amici} date={date}/>)}
         </ul>
     );
 }

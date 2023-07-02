@@ -50,9 +50,9 @@ export default function Dashboard()  {
 
   return (
     <>     
-    {aggiuntaAmico && <WindowAggiuntaAmico handleAggiungiAmico={handleAggiungiAmico}/>}
+    {aggiuntaAmico && <WindowAggiuntaAmico handleAggiungiAmico={handleAggiungiAmico} setAggiuntaAmico={setAggiuntaAmico}/>}
     <Container fluid className="d-flex flex-row p-0 justify-content-center" id="all-container">
-      <LeftContainer handleChatAperta={handleChatAperta} handleAggiungiAmico={handleAggiungiAmico}/>
+      <LeftContainer handleChatAperta={handleChatAperta} handleAggiungiAmico={handleAggiungiAmico} aggiuntaAmico={aggiuntaAmico}/>
       <RightContainer chatAperta={chatAperta} contenutoChatAperta={contenutoChatAperta}/>
     </Container>
     </>   

@@ -3,14 +3,14 @@ import { useEffect } from "react";
 import { Image, Badge } from "react-bootstrap";
 import axios from "axios";
 
-export default function Chat({ chat, handleChatAperta, amici }) {
+export default function Chat({ chat, handleChatAperta, amici, date }) {
   const config = {
     headers: { "x-access-token": localStorage.getItem("token") },
   };
 
   // prende messaggi e dati utenti per la chat
   const [utente, setUtente] = useState("");
-  const [lastMessage, setLastMessage] = useState({text: "no-message", orario: ""});
+  const [lastMessage, setLastMessage] = useState({text: "", orario: ""});
 
   useEffect(() => {
     
@@ -39,7 +39,7 @@ export default function Chat({ chat, handleChatAperta, amici }) {
 
   return (
 
-    <li className="list-group-item d-flex p-1" aria-current="true"  onClick={(e) => {handleChatAperta(e, utente); console.log(utente)}}>
+    <li className="list-group-item d-flex p-1" aria-current="true"  onMouseDown={(e) => {handleChatAperta(e, utente); console.log(utente)}}>
 
       {/* immagine IMG-DIV */}
       <div className="container img-div m-1 text-center">
@@ -53,7 +53,7 @@ export default function Chat({ chat, handleChatAperta, amici }) {
       <div className="container user-msg-div p-0">
         <h5 className="username-chat mt-2 text-start px-2">{utente.username}</h5>
         <p className="messaggio-chat m-0 mt-2 text-start px-2">
-          {lastMessage.length !== 0 ? lastMessage.text : <p>Ultimo messaggio</p>}
+          {lastMessage.length !== 0 && lastMessage.text}
         </p>
       </div>
 
@@ -65,7 +65,7 @@ export default function Chat({ chat, handleChatAperta, amici }) {
           </Badge>
         </div> */}
         <div className="position-absolute bottom-0 end-0 m-2">
-          <p className="paragraph block time m-0"> {lastMessage.orario.substring(8, 10) + "/" + lastMessage.orario.substring(5, 7) + " " + lastMessage.orario.substring(11, 16)} </p> 
+          <p className="paragraph block time m-0"> {(date.day == lastMessage.orario.substring(8, 10) && date.month == lastMessage.orario.substring(5, 7) && date.year == lastMessage.orario.substring(0, 4)) ? "oggi " + lastMessage.orario.substring(11, 16) : (lastMessage.orario.substring(8, 10) + "/" + lastMessage.orario.substring(5, 7) + " " + lastMessage.orario.substring(11, 16))} </p> 
         </div>
       </div>
     </li>
