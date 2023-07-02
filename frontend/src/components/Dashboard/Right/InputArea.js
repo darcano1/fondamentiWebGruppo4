@@ -13,7 +13,7 @@ export default function InputArea({idUtente}) { //idUtente contiene l'id dell'ut
     const [messaggio, setMessaggio] = useState("");
 
     function sendMessage() {
-        console.log(messaggio);
+        //console.log(messaggio);
 
         //Richiede i messaggi della chat con l'utente selezionato
                 axios.post("http://localhost:4001/api/chat/", {
@@ -21,7 +21,7 @@ export default function InputArea({idUtente}) { //idUtente contiene l'id dell'ut
                             receiverId: idUtente,
                         }, config)
                         .then( res => {
-                            console.log(res); //ID conversazione
+                            //console.log(res); //ID conversazione
 
                             // Caricamento nuovo messaggio sul db
                             creaNuovoMessaggio(res.data._id);

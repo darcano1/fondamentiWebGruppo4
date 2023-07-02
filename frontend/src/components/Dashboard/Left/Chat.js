@@ -1,51 +1,39 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
-import { ListGroup, Image, Badge } from "react-bootstrap";
+import { Image, Badge } from "react-bootstrap";
 import axios from "axios";
 
-export default function Chat({ chat, handleChatAperta }) {
+export default function Chat({ chat, handleChatAperta, amici }) {
   const config = {
     headers: { "x-access-token": localStorage.getItem("token") },
   };
 
   // prende messaggi e dati utenti per la chat
-  const [utente, setUtente] = useState({});
-  const [messages, setMessages] = useState([]);
-  const [lastMessage, setLastMessage] = useState({text: "no-message"});
+  const [utente, setUtente] = useState("");
+  const [lastMessage, setLastMessage] = useState({text: "no-message", orario: ""});
 
   useEffect(() => {
     
-    async function getUser(id) {
-      axios
-        .get("http://localhost:4001/api/user/profile/" + id, config)
-        .then( res => setUtente(res.data))
-        .catch( err => console.log(err.response));
-    }
+      // Carica i dati dell'utente
+      console.log(chat);
+      axios.get("http://localhost:4001/api/user/profile/" + (chat.members[0] === localStorage.getItem("_id") ? chat.members[1] : chat.members[0]), config)
+        .then( res => {
+          setUtente(res.data);
+          
+          // Richiede l'id della chat con l'utente selezionato
+          axios.get('http://localhost:4001/api/chat/find/' + localStorage.getItem('_id') + '/' + res.data._id, config)
+          .then(res => { 
 
-    if (chat.members[0] == localStorage.getItem("_id")) {
-      getUser(chat.members[1]);
-    } else {
-      getUser(chat.members[0]);
-    }
-
-    // Richiede l'id della chat con l'utente selezionato
-    axios.get('http://localhost:4001/api/chat/find/' + localStorage.getItem('_id') + '/' + utente._id, config)
-    .then(res => { 
-      //console.log("res " + res.data);
-
-      // Richiede i messaggi della chat con l'utente selezionato
-      axios.get('http://localhost:4001/api/messages/' + res.data._id, config)
-        .then(res => { 
-          console.log("test");
-          console.log(res.data);
-          setMessages(res.data);
-          setLastMessage({text: res.data.text})
-          console.log(messages);
-          // console.log("Ricevuti messaggi: " + res.data[0]); 
+            // Richiede i messaggi della chat con l'utente selezionato
+            axios.get('http://localhost:4001/api/messages/lastmessage/' + res.data._id, config)
+              .then(res => {         
+                setLastMessage({text: res.data[0].text, orario: res.data[0].updatedAt}); 
+              })
+              .catch(err => console.log(err.response));
+          })
+          .catch(err => console.log(err.response));
         })
-        .catch(err => console.log(err.response));
-    })
-    .catch(err => console.log(err.response));
+        .catch( err => console.log(err.response));
 
   }, []);
 
@@ -63,10 +51,9 @@ export default function Chat({ chat, handleChatAperta }) {
 
       {/* username e messaggio USER-MSG-DIV */}
       <div className="container user-msg-div p-0">
-        <h5 className="username-chat mt-2 text-start">{utente.username}</h5>
-        <p className="messaggio-chat m-0 mt-2">
-          {lastMessage.text}
-          {messages.length !== 0 ? messages[messages.length - 1].text : <p>Ultimo messaggio</p>}
+        <h5 className="username-chat mt-2 text-start px-2">{utente.username}</h5>
+        <p className="messaggio-chat m-0 mt-2 text-start px-2">
+          {lastMessage.length !== 0 ? lastMessage.text : <p>Ultimo messaggio</p>}
         </p>
       </div>
 
@@ -78,7 +65,7 @@ export default function Chat({ chat, handleChatAperta }) {
           </Badge>
         </div> */}
         <div className="position-absolute bottom-0 end-0 m-2">
-          <p className="paragraph block time m-0"> {/*messages[messages.length - 1].updatedAt.substring(8, 10) + "/" + messages[messages.length - 1].updatedAt.substring(5, 7) + " " + messages[messages.length - 1].updatedAt.substring(11, 16)*/} </p> 
+          <p className="paragraph block time m-0"> {lastMessage.orario.substring(8, 10) + "/" + lastMessage.orario.substring(5, 7) + " " + lastMessage.orario.substring(11, 16)} </p> 
         </div>
       </div>
     </li>

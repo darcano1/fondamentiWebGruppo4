@@ -18,15 +18,15 @@ export default function Dashboard()  {
   const [aggiuntaAmico, setAggiuntaAmico] = useState(false);
 
   function handleAggiungiAmico(){
-    // Logica per div in sovraimpressione
+    // LOGICA PER DIV IN SOVRAIMPRESSIONE
     setAggiuntaAmico(!aggiuntaAmico);
   }
 
   function handleChatAperta(e, amico) { 
     e.preventDefault();
     setChatAperta(amico);
-
-    // Richiede l'id della chat con l'utente selezionato
+    setContenutoChatAperta([]);
+    // RICHIEDE L'ID DELLA CHAT CON L'UTENTE SELEZIONATO
     axios.get('http://localhost:4001/api/chat/find/' + localStorage.getItem('_id') + '/' + amico._id, config)
       .then(res => { 
         //console.log("res " + res.data);
@@ -35,7 +35,6 @@ export default function Dashboard()  {
         axios.get('http://localhost:4001/api/messages/' + res.data._id, config)
           .then(res => { 
             handleContenutoChatAperta(res.data);
-            console.log(res);
             // console.log("Ricevuti messaggi: " + res.data[0]); 
           })
           .catch(err => console.log(err.response));
@@ -43,6 +42,7 @@ export default function Dashboard()  {
       .catch(err => console.log(err.response));
   };
   
+  // AGGIORNA LO STATO CHE CONTIENE TUTTI I DATI DELLA CHAT
   function handleContenutoChatAperta(data) {
       setContenutoChatAperta(data);
       //console.log("Messaggi" + data);

@@ -10,10 +10,10 @@ import RegisterForm from "../components/Login/RegisterForm";
 export default function Login() {
   const [data, setDat] = useState(null);
 
-  // true -> login, false -> register
+  // TRUE -> LOGIN, FALSE -> REGISTER
   const [alreadyRegistered, setAlreadyRegistered] = useState(true);
 
-  // messaggi di errore
+  // MESSAGGI DI ERRORE
   const [rispostaServerLogin, setRispostaServerLogin] = useState('');
   const [rispostaServerRegister, setRispostaServerRegister] = useState('');
 
@@ -25,7 +25,7 @@ export default function Login() {
     setRispostaServerRegister('');
   }
 
-  // handle signin
+  // HANDLE SIGN-IN
   function handleSubmitSignin(e) {
     e.preventDefault();
     axios.post("http://localhost:4001/api/auth/login", {
@@ -42,11 +42,11 @@ export default function Login() {
       .catch( err => {setRispostaServerLogin(err.response.data)});
   }
 
-  // handle singup
+  // HANDLE SIGN-UP
   function handleSubmitSignup(e) {
     e.preventDefault();
 
-    //Autenticazione API
+    //AUTENTICAZIONE API
     axios.post("http://localhost:4001/api/auth/register", {
         email: e.target.email.value,
         password: e.target.psw.value,
