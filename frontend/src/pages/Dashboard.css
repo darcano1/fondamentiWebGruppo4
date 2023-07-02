@@ -63,7 +63,7 @@
     width: 100%;
     height: 100%;
     overflow: hidden;
-    background-color: lightgray;
+    background-color: rgb(10, 30, 50);
     display: flex;
     align-items: center;
   }
@@ -73,8 +73,8 @@
     height: 88vh;
     border-radius: 1em;
     overflow: hidden;
-    -webkit-box-shadow: 0px 0px 20px -5px #000000;
-    box-shadow: 0px 0px 20px -5px #000000;
+    -webkit-box-shadow: 0px 0px 20px -5px rgb(126, 126, 126);
+    box-shadow: 0px 0px 20px -5px rgb(126, 126, 126);
   }
   
   /* ------------------------------------------------------------------------- */
@@ -86,7 +86,7 @@
     min-width: 17em;
     height: auto;
     max-height: 90vh;
-    background-color: #f4f4f4;
+    background-color: rgba(206, 206, 206, 1);
   }
   
   #buttons-left-container {
@@ -196,6 +196,11 @@
     text-overflow: ellipsis;
     white-space: nowrap;
   }
+
+  #username-chat-amico {
+    color: #FEFEFE;
+    text-shadow: 0px 0px 8px rgba(0,0,0,0.8);
+  }
   
   .time {
     font-size: smaller;
@@ -260,6 +265,9 @@
     height: auto;
     max-height: 90vh;
     background-color: #f4f4f4;
+    background-image: url(https://img.freepik.com/free-vector/wave-textures-white-background-vector_53876-60286.jpg?w=1380&t=st=1688285102~exp=1688285702~hmac=1cd3b8dfa1f67b8e7516bb7bc8642e92ece2867b65c6787682c4ef85ecaa632b);
+    background-repeat: no-repeat;
+    background-size: cover;
   }
   
   #img-profilo {
@@ -322,10 +330,25 @@
     border: none;
     background: none;
   }
+
+  .no-message p{
+    border-radius: 1em;
+    width: max-content;
+    padding: 0.5em;
+    word-wrap: break-word;
+    word-break: break-all;
+    line-height: 1.25em;
+    background-color: rgba(254, 254, 254, 0.85);
+  }
   
   .message {
     margin-bottom: 1em;
     display: flex;
+  }
+
+  .no-message{
+    display: flex;
+    justify-content: center;
   }
   
   .my-message {
@@ -357,7 +380,7 @@
     text-align: left;
     flex-direction: row;
     margin-right: 20%;
-    background-color: coral;
+    background-color: rgba(150,151,254,1);
   }
   
   #message-area::-webkit-scrollbar {
