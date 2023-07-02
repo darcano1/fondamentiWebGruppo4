@@ -6,7 +6,7 @@ import axios from "axios";
 import LeftContainer from '../components/Dashboard/Left/LeftContainer'
 import RightContainer from '../components/Dashboard/Right/RightContainer'
 import WindowAggiuntaAmico from '../components/Dashboard/Left/WindowAggiuntaAmico.js';
-
+import WindowCambioImmagineProfilo from '../components/Dashboard/Left/WindowCambioImmagineProfilo.js';
 export default function Dashboard()  {
 
     const config = { headers:
@@ -16,10 +16,16 @@ export default function Dashboard()  {
   const [chatAperta, setChatAperta] = useState(false);
   const [contenutoChatAperta, setContenutoChatAperta] = useState([]);
   const [aggiuntaAmico, setAggiuntaAmico] = useState(false);
+  const [cambioImmagineProfilo, setCambioImmagineProfilo] = useState(false);
 
   function handleAggiungiAmico(){
     // LOGICA PER DIV IN SOVRAIMPRESSIONE
     setAggiuntaAmico(!aggiuntaAmico);
+  }
+
+  function handleCambiaImmagineProfilo(){
+    // LOGICA PER DIV IN SOVRAIMPRESSIONE
+    setCambioImmagineProfilo(!cambioImmagineProfilo);
   }
 
   function handleChatAperta(e, amico) { 
@@ -51,8 +57,9 @@ export default function Dashboard()  {
   return (
     <>     
     {aggiuntaAmico && <WindowAggiuntaAmico handleAggiungiAmico={handleAggiungiAmico} setAggiuntaAmico={setAggiuntaAmico}/>}
+    {cambioImmagineProfilo && <WindowCambioImmagineProfilo handleCambiaImmagineProfilo={handleCambiaImmagineProfilo} setCambioImmagineProfilo={setCambioImmagineProfilo}/>}
     <Container fluid className="d-flex flex-row p-0 justify-content-center" id="all-container">
-      <LeftContainer handleChatAperta={handleChatAperta} handleAggiungiAmico={handleAggiungiAmico} aggiuntaAmico={aggiuntaAmico}/>
+      <LeftContainer handleChatAperta={handleChatAperta} handleAggiungiAmico={handleAggiungiAmico} handleCambiaImmagineProfilo={handleCambiaImmagineProfilo} aggiuntaAmico={aggiuntaAmico}/>
       <RightContainer chatAperta={chatAperta} contenutoChatAperta={contenutoChatAperta}/>
     </Container>
     </>   

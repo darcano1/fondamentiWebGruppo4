@@ -5,7 +5,7 @@ import { Container } from 'react-bootstrap';
 import Head from "./Head";
 import ListaChat from "./ListaChat";
 
-export default function LeftContainer({handleChatAperta, handleAggiungiAmico, aggiuntaAmico}) {
+export default function LeftContainer({handleChatAperta, handleAggiungiAmico, aggiuntaAmico, handleCambiaImmagineProfilo}) {
 
     // HEADER TOKEN 
     const config = { headers:
@@ -37,7 +37,7 @@ export default function LeftContainer({handleChatAperta, handleAggiungiAmico, ag
 
     return (
         <Container fluid className="d-flex flex-column flex-shrink-1" id="left-container">
-            <Head amici={listaAmici} handleAmici={handleListaAmici} handleAggiungiAmico={handleAggiungiAmico}/>
+            <Head amici={listaAmici} handleAmici={handleListaAmici} handleAggiungiAmico={handleAggiungiAmico} handleCambiaImmagineProfilo={handleCambiaImmagineProfilo}/>
             <ListaChat lista={listaAmici ? elencoIdAmici : elencoChat} amici={listaAmici} handleChatAperta={handleChatAperta} setElencoIdAmici={setElencoIdAmici} elencoIdAmici={elencoIdAmici}/>
         </Container>
     )

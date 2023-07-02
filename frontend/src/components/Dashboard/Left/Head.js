@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Container, Button, InputGroup, FormControl } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch, faUsers, faSignOut, faPlusCircle } from '@fortawesome/free-solid-svg-icons';
+import { faSearch, faUsers, faSignOut, faPlusCircle, faImage } from '@fortawesome/free-solid-svg-icons';
 
 
-export default function Head({ amici, handleAmici, handleNewChat, handleAggiungiAmico}) {
+export default function Head({ amici, handleAmici, handleNewChat, handleAggiungiAmico, handleCambiaImmagineProfilo}) {
 
     const navigate = useNavigate();
 
@@ -19,6 +19,9 @@ export default function Head({ amici, handleAmici, handleNewChat, handleAggiungi
             <Container fluid className="d-flex flex-row">
                 <h1 className="me-auto ms-3 mt-2">{amici ? "Amici" : "Chats"}</h1>
                 <div id="buttons-left-container" className="input-group d-flex flex-row">
+                    <Button id="nuovoAmico" className="input-group-text shadow-sm me-2" onMouseDown={handleCambiaImmagineProfilo}>
+                        <FontAwesomeIcon icon={faImage} style={{color:'black'}}/>
+                    </Button>
                     <Button id="nuovoAmico" className="input-group-text shadow-sm me-2" onMouseDown={handleAggiungiAmico}>
                         <FontAwesomeIcon icon={faPlusCircle} style={{color:'black'}}/>
                     </Button>
